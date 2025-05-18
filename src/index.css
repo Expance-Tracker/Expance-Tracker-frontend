@@ -1,0 +1,30 @@
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+h1 {
+  margin-bottom: 30px;
+}
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}

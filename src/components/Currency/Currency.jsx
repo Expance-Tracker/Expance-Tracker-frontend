@@ -39,8 +39,8 @@ const Currency = () => {
     fetchRates();
   }, []);
 
-  if (error) return <div>Помилка: {error}</div>;
-  if (!rates) return <div>Завантаження...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (!rates) return <div>Loading...</div>;
 
   const filteredRates = rates.filter(
     rate =>

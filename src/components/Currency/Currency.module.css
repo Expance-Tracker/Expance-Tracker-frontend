@@ -1,0 +1,53 @@
+.external_currency_box {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #355359 0%, #3b5d63 100%);
+  border-radius: 16px;
+  padding: 16px;
+}
+/* .currency_box {
+} */
+.list_title {
+  display: flex;
+  /* gap: 37px; */
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 12px;
+  padding: 16px 12px;
+  background: linear-gradient(180deg, #294045 0%, #1e2f33 100%);
+}
+.title {
+  font-family: "Inter Tight";
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+}
+.list_rates {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 11px;
+  padding-left: 29px;
+  padding-top: 16px;
+}
+.list_rates:last-child {
+  padding-top: 32px;
+  margin-bottom: 32px;
+}
+.rate {
+  font-family: "Inter Tight";
+  font-weight: 400;
+  font-size: 14px;
+  text-align: right;
+  color: #fff;
+}
+
+.img_wallet {
+  width: 234px;
+  height: 174px;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+}
+@media (min-width: 1280px) {
+}

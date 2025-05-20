@@ -1,4 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import bigWallet from '../../assets/Currency/wallet-big.webp';
+import smallWallet from '../../assets/Currency/wallet-small.webp';
+import styles from './Currency.module.css'
 
 const MONOBANK_API_URL = 'https://api.monobank.ua/bank/currency';
 const LOCAL_STORAGE_KEY = 'monobankCurrencyData';
@@ -49,21 +53,23 @@ const Currency = () => {
   );
 
   return (
-    <div>
-      <div>
-        <div>Currency</div>
-        <div>Purchase</div>
-        <div>Sale</div>
+    <div className={styles.external_currency_box}>
+    <div className={styles.currency_box}>
+      <div className={styles.list_title}>
+        <div className={styles.title}>Currency</div>
+        <div className={styles.title}>Purchase</div>
+        <div className={styles.title}>Sale</div>
       </div>
 
       {filteredRates.map(rate => (
-        <div key={rate.currencyCodeA}>
-          <div>{rate.currencyCodeA === 840 ? 'USD' : 'EUR'}</div>
-          <div>{rate.rateBuy?.toFixed(2)}</div>
-          <div>{rate.rateSell?.toFixed(2)}</div>
+        <div key={rate.currencyCodeA} className={styles.list_rates}>
+          <div className={styles.rate}>{rate.currencyCodeA === 840 ? 'USD' : 'EUR'}</div>
+          <div className={styles.rate}>{rate.rateBuy?.toFixed(2)}</div>
+          <div className={styles.rate}>{rate.rateSell?.toFixed(2)}</div>
         </div>
       ))}
-    </div>
+      </div>
+      <img src={smallWallet} alt="wallet" className={styles.img_wallet} /></div>
   );
 };
 

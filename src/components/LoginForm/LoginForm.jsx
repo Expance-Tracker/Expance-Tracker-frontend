@@ -4,13 +4,19 @@ import css from "./LoginForm.module.css";
 import walletIcon from "../../assets/walletIcon.svg";
 import loginImg from "../../assets/loginImg.svg";
 import { BiSolidEnvelope } from "react-icons/bi";
-import lockIcon from "../../assets/lock.svg";
 import { MdLock } from "react-icons/md";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+
+import { login } from "../../redux/auth/operations";
+import toast from "react-hot-toast";
 
 export default function LoginForm() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const initialValues = {
     email: "",
     password: ""
@@ -27,7 +33,16 @@ export default function LoginForm() {
       .required("Required")
   });
 
-  const handleSubmit = (values, options) => {};
+  const handleSubmit = (values, options) => {
+    dispatch(login(values))
+      .unwrap()
+      .then((res) => {
+        toast.success(`Welcome, ${res.name}`);
+        navigate("/transactions", { replace: true });
+        options.resetForm();
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className={css.wrapper}>
@@ -43,6 +58,7 @@ export default function LoginForm() {
       <Formik
         initialValues={initialValues}
         validationSchema={loginValidationSchema}
+        onSubmit={handleSubmit}
       >
         <Form className={css.form}>
           <div className={css.block}>

@@ -1,9 +1,12 @@
-import { ErrorMessage, Field, Form, Formik, validateYupSchema } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import css from "./LoginForm.module.css";
+
 import walletIcon from "../../assets/walletIcon.svg";
 import loginImg from "../../assets/loginImg.svg";
-import emailIcon from "../../assets/email.svg";
+import { BiSolidEnvelope } from "react-icons/bi";
 import lockIcon from "../../assets/lock.svg";
+import { MdLock } from "react-icons/md";
+
 import { NavLink } from "react-router-dom";
 import * as Yup from "yup";
 
@@ -51,11 +54,8 @@ export default function LoginForm() {
                 placeholder="E-mail"
                 autoComplete="off"
               />
-              <img
-                src={emailIcon}
-                className={css.field__icon}
-                alt="Email icon"
-              />
+
+              <BiSolidEnvelope className={css.field__icon} />
             </label>
 
             <ErrorMessage name="email" component="span" className={css.error} />
@@ -70,11 +70,7 @@ export default function LoginForm() {
                 placeholder="Password"
                 autoComplete="off"
               />
-              <img
-                src={lockIcon}
-                className={css.field__icon}
-                alt="Email icon"
-              />
+              <MdLock className={css.field__icon} />
             </label>
 
             <ErrorMessage

@@ -4,6 +4,7 @@
   justify-content: flex-start;
   flex-direction: column;
   margin: 0 auto;
+  margin-top: 20px;
   background-color: #508f8c;
   border-radius: 16px;
   padding: 16px;
@@ -91,12 +92,9 @@
   left: 14px;
 }
 
-.field__icon__lock {
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  top: 197px;
-  left: 34px;
+.input:hover + .field__icon,
+.input:focus + .field__icon {
+  color: #0b6016;
 }
 
 button {
@@ -149,4 +147,65 @@ button {
   position: absolute;
   bottom: 23px;
   right: 12px;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    width: 533px;
+    height: 519px;
+    margin-top: 176px;
+    padding: 53px 62px;
+
+    position: initial;
+  }
+
+  .logo {
+    margin-bottom: 37px;
+  }
+
+  .form {
+    gap: 24px;
+    width: 409px;
+    margin-bottom: 21px;
+  }
+
+  .input {
+    width: 409px;
+  }
+
+  .input:hover,
+  .input:focus {
+    width: 409px;
+  }
+
+  .error {
+    font-size: 14px;
+  }
+
+  button {
+    width: 410px;
+  }
+
+  .button {
+    margin-top: 8px;
+  }
+
+  .helloImg {
+    width: 320px;
+    height: 239px;
+
+    bottom: 58px;
+    right: 1px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .wrapper {
+    margin-top: 75px;
+  }
+
+  .helloImg {
+    bottom: 35px;
+    right: 16px;
+  }
 }

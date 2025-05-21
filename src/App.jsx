@@ -1,13 +1,10 @@
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import { Routes, Route } from "react-router-dom";
+import LoginPage from './pages/LoginPage/LoginPage'
 import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
-import LoginPage from "./pages/LoginPage/LoginPage";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 
-// import { useState } from 'react'
-
 function App() {
-  // const [count, setCount] = useState(0)
     return (
       <Routes>
         <Route path="/" element={<LoginPage />} />

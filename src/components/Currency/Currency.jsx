@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
 import bigWallet from '../../assets/Currency/wallet-big.webp';
-import smallWallet from '../../assets/Currency/wallet-small.webp';
 import styles from './Currency.module.css'
 
 const MONOBANK_API_URL = 'https://api.monobank.ua/bank/currency';
@@ -69,7 +68,7 @@ const Currency = () => {
         </div>
       ))}
       </div>
-      <img src={smallWallet} alt="wallet" className={styles.img_wallet} /></div>
+      <img src={bigWallet} alt="wallet" className={styles.img_wallet} /></div>
   );
 };
 

@@ -1,15 +1,25 @@
+.login__container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+
 .wrapper {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
   margin: 0 auto;
-  margin-top: 20px;
   background-color: #508f8c;
   border-radius: 16px;
   padding: 16px;
   width: 280px;
-  height: 528px;
+  min-height: 528px;
 
   position: relative;
 }
@@ -76,8 +86,9 @@
 .error {
   font-family: "Inter", sans-serif;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 10px;
   color: red;
+  margin-bottom: 0;
 }
 
 .label__block {
@@ -153,7 +164,6 @@ button {
   .wrapper {
     width: 533px;
     height: 519px;
-    margin-top: 176px;
     padding: 53px 62px;
 
     position: initial;
@@ -179,7 +189,7 @@ button {
   }
 
   .error {
-    font-size: 14px;
+    font-size: 10px;
   }
 
   button {
@@ -200,10 +210,6 @@ button {
 }
 
 @media (min-width: 1280px) {
-  .wrapper {
-    margin-top: 75px;
-  }
-
   .helloImg {
     bottom: 35px;
     right: 16px;

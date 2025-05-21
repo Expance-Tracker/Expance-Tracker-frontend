@@ -2,7 +2,9 @@ body {
   font-family: sans-serif;
   line-height: 1.5;
   box-sizing: border-box;
-  background-color: #3b5d63;
+  background: linear-gradient(135deg, #294045 0%, #1e2f33 100%);
+  background-size: cover;
+  height: 100%;
 }
 
 h1,

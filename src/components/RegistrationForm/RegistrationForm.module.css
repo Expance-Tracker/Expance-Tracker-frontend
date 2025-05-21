@@ -6,7 +6,7 @@
 }
 
 .register-card {
-  background: #508F8C;
+  background: #508f8c;
   border-radius: 12px;
   padding: 26px 16px;
   width: 90vw;
@@ -20,7 +20,7 @@
 .register-logo {
   width: 54px;
   height: 54px;
-  background: url('/src/assets/register/reg_logo.png') no-repeat center/contain;
+  background: url("/src/assets/register/reg_logo.png") no-repeat center/contain;
 }
 
 .register-title {
@@ -40,7 +40,7 @@
   padding: 12px;
   border-radius: 8px;
   border: 1px solid #2c4747;
-  background: #508F8C;
+  background: #508f8c;
   color: #102828;
   font-size: 1rem;
   outline: none;
@@ -53,11 +53,11 @@
 }
 
 .form-input-register:focus {
-  border-color: #0B6016;
+  border-color: #0b6016;
 }
 
 .form-error-register {
-  color: #C90202;
+  color: #c90202;
   font-size: 10px;
   margin-top: 4px;
 }
@@ -82,7 +82,7 @@
 }
 
 .register-btn {
-  background: linear-gradient(0deg, #3B5D63, #355359);
+  background: linear-gradient(0deg, #3b5d63, #355359);
   color: #fff;
   border: none;
   margin-bottom: 12px;
@@ -98,10 +98,10 @@
   margin-top: 4px;
 }
 
-.login-link-register:hover, 
+.login-link-register:hover,
 .register-btn:hover {
   background: #2c4747;
-  color: #FCFCFC;
+  color: #fcfcfc;
 }
 
 .password-bar > p {

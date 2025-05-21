@@ -5,10 +5,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import Header from "./components/Header/Header";
 
-// import { useState } from 'react'
-
 function App() {
-  // const [count, setCount] = useState(0)
   return (
     <Routes>
       <Route path="/" element={<LoginPage />} />

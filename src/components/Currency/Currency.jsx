@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import bigWallet from '../../assets/Currency/wallet-big.webp';
 import styles from './Currency.module.css'
 
-const MONOBANK_API_URL = 'https://api.monobank.ua/bank/currency';
+const MONOBANK_API_URL = 'https://expance-tracker-backend-9zu7.onrender.com/rates';
 const LOCAL_STORAGE_KEY = 'monobankCurrencyData';
 const CACHE_DURATION_MS = 60 * 60 * 1000;
 
@@ -11,7 +11,7 @@ const Currency = () => {
   const [rates, setRates] = useState(null);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
+  useEffect(() => { 
     const fetchRates = async () => {
       try {
         const cached = localStorage.getItem(LOCAL_STORAGE_KEY);

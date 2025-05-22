@@ -1,5 +1,6 @@
-import { Route, Routes } from "react-router-dom";
-import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
+
 import LoginPage from "./pages/LoginPage/LoginPage";
 import "./App.css";
 import RegistrationForm from "./components/RegistrationForm/RegistrationForm";

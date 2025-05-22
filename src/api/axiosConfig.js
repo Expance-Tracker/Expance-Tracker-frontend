@@ -1,10 +1,10 @@
-import axios from 'axios';
+import axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'http://localhost:3000',
-    headers: {
-        'Content-Type': 'application/json',
-    },
+  baseURL: "https://expance-tracker-backend-9zu7.onrender.com/",
+  headers: {
+    "Content-Type": "application/json"
+  }
 });
 
 export default instance;

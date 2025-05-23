@@ -1,10 +1,13 @@
-import { useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import PasswordStrengthBar from "react-password-strength-bar";
+
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
+
+import PasswordStrengthBar from "react-password-strength-bar";
 import axiosInstance from "../../api/axiosConfig";
 import css from "./RegistrationForm.module.css";
+import { useState } from "react";
+import walletWave from '../../assets/register/wallet_wave.png';
 
 const RegistrationSchema = Yup.object().shape({
   name: Yup.string()
@@ -176,7 +179,7 @@ export default function RegistrationForm() {
       </div>
 
       <img
-        src="/src/assets/register/wallet_wave.png"
+        src={walletWave}
         alt="Happy Wallet"
         className={css["wallet-image-registration"]}
       />

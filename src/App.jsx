@@ -1,10 +1,11 @@
+import "./App.css";
+
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import "./App.css";
-import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
+
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import Header from "./components/Header/Header";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
 
 function App() {
   return (

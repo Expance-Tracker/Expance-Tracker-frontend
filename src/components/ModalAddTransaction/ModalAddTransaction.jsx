@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import s from "./ModalAddTransaction.module.css";
 import { TfiClose } from "react-icons/tfi";
+import AddTransactionForm from "../AddTransactionForm/AddTransactionForm";
 
 const ModalAddTransaction = ({ onClose }) => {
   const [isBackdropVisible, setIsBackdropVisible] = useState(false);
@@ -43,6 +44,7 @@ const ModalAddTransaction = ({ onClose }) => {
           <TfiClose className={s.closeIcon} />
         </button>
         <h3 className={s.title}>Add transaction</h3>
+        <AddTransactionForm onClose={onClose} />
       </div>
     </>
   );

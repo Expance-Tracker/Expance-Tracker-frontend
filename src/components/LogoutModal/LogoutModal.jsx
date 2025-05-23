@@ -1,3 +1,4 @@
+
 import css from "./LogoutModal.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { closeLogoutModal } from "../../redux/slices/headerModalSlice";
@@ -5,7 +6,6 @@ import { closeLogoutModal } from "../../redux/slices/headerModalSlice";
 export default function LogoutModal() {
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.modal.isLogoutModalOpen);
-
   const handleLogout = async () => {
     try {
       const response = await fetch("/api/logout", {

@@ -1,0 +1,109 @@
+.logout_modal_overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 250ms ease-in-out;
+}
+.logout_modal_overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.logout_modal {
+  background-color: #508f8c;
+  width: 280px;
+  height: 312px;
+  padding: 16px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+}
+.logo_modal {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+.icon_modal {
+  width: 54px;
+  height: 54px;
+  background: url("/src/assets/register/reg_logo.png") no-repeat center/contain;
+}
+.title_modal {
+  font-family: "Poppins", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #081222;
+}
+.text_modal {
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+  color: #081222;
+  max-width: 196px;
+  max-height: 44px;
+}
+.modal_button {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+}
+button {
+  width: 248px;
+  height: 44px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+}
+.logout_button {
+  background: linear-gradient(180deg, #355359 0%, #3b5d63 100%);
+  color: #fcfcfc;
+  border: none;
+}
+.cancel_button {
+  border: 1px solid #081222;
+  color: #081222;
+}
+
+@media (min-width: 768px) {
+  .logout_modal {
+    width: 533px;
+    height: 387px;
+    padding-top: 53px;
+    gap: 0;
+  }
+
+  .text_modal {
+    max-width: 294px;
+    max-height: 22px;
+    margin-top: 38px;
+    margin-bottom: 24px;
+  }
+  .modal_button {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 21px;
+  }
+  button {
+    width: 410px;
+  }
+}
+@media (min-width: 1280px) {
+}

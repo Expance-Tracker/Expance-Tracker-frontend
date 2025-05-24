@@ -78,6 +78,7 @@ button {
 .cancel_button {
   border: 1px solid #081222;
   color: #081222;
+  background: #508f8c;
 }
 
 @media (min-width: 768px) {

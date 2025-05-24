@@ -1,7 +1,11 @@
-import React from "react";
-import css from "./LogoutModal.module.css";
 
-export default function LogoutModal({ isOpen, onClose }) {
+import css from "./LogoutModal.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { closeLogoutModal } from "../../redux/slices/headerModalSlice";
+
+export default function LogoutModal() {
+  const dispatch = useDispatch();
+  const isOpen = useSelector((state) => state.modal.isLogoutModalOpen);
   const handleLogout = async () => {
     try {
       const response = await fetch("/api/logout", {
@@ -13,14 +17,15 @@ export default function LogoutModal({ isOpen, onClose }) {
         // Успішно вийшли можна редіректнути
         window.location.href = "/login";
       } else {
-        alert("Помилка під час виходу.");
+        alert("Error while logging out.");
       }
     } catch (error) {
       console.error("Logout error:", error);
     }
   };
 
-  //   if (!isOpen) return null;
+  if (!isOpen) return null;
+
   return (
     <div className={css.logout_modal_overlay}>
       <div className={css.logout_modal}>
@@ -34,7 +39,10 @@ export default function LogoutModal({ isOpen, onClose }) {
             {" "}
             Logout
           </button>
-          <button onClick={onClose} className={css.cancel_button}>
+          <button
+            onClick={() => dispatch(closeLogoutModal())}
+            className={css.cancel_button}
+          >
             Cancel
           </button>
         </div>

@@ -1,9 +1,11 @@
 import css from "./Header.module.css";
-import { NavLink } from "react-router-dom";
 import { PiLineVerticalThin } from "react-icons/pi";
 import { IoExitOutline } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { openLogoutModal } from "../../redux/slices/headerModalSlice";
 
 export default function Header() {
+  const dispatch = useDispatch();
   return (
     <header className={css.header}>
       <div className={css.headerLogo}>
@@ -19,10 +21,13 @@ export default function Header() {
       <div className={css.headerUserInfo}>
         <p className={css.headerUsername}>Name</p>
         <PiLineVerticalThin size="30" strokeWidth="1" />
-        <NavLink to="/" className={css.headerLinkStyle}>
+        <button
+          className={css.headerButtonStyle}
+          onClick={() => dispatch(openLogoutModal())}
+        >
           <IoExitOutline size="17.99" strokeWidth="1" />
           Exit
-        </NavLink>
+        </button>
       </div>
     </header>
   );

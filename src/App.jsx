@@ -6,7 +6,6 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import LogoutModal from "./components/LogoutModal/LogoutModal";
 import Header from "./components/Header/Header";
-import LogoutModal from "./components/LogoutModal/LogoutModal";
 
 function App() {
   return (

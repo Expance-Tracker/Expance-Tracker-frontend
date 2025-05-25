@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
+import StatisticsTab from "./pages/StatisticsTab"; // ✅ Імпорт
 import LogoutModal from "./components/LogoutModal/LogoutModal";
 import Header from "./components/Header/Header";
 import RestrictedRoute from "./components/routes/RestrictedRoute";
@@ -26,7 +27,7 @@ function App() {
         }
       />
 
-      {/* Protected Routes Layout */}
+      {/* Protected Routes */}
       <Route
         path="/dashboard"
         element={
@@ -35,6 +36,22 @@ function App() {
             <LogoutModal />
             <DashboardPage />
           </>
+        }
+      />
+
+      <Route
+        path="/statistics"
+        element={
+          <RestrictedRoute
+            redirectTo="/login"
+            component={
+              <>
+                <Header />
+                <LogoutModal />
+                <StatisticsTab />
+              </>
+            }
+          />
         }
       />
     </Routes>

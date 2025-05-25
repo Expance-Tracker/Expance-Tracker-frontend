@@ -55,7 +55,7 @@ export default function RegistrationForm() {
                 password: values.password
               });
               localStorage.setItem("token", res.data.token);
-              navigate("/");
+              navigate("/dashboard");
             } catch (error) {
               setBackendError(
                 error.response?.data?.message || "Registration error - backend"

@@ -3,7 +3,6 @@ import { authReducer } from "./auth/authSlice";
 import balanceReducer from "./slices/balanceSlice";
 import { transactionsReducer } from "./transactions/transactionsSlice";
 import headerModalReducer from "./slices/headerModalSlice";
-import globalReducer from "./global/globalSlice";
 
 import {
   persistStore,
@@ -31,8 +30,7 @@ export const store = configureStore({
     auth: persistedReducer,
     balance: balanceReducer,
     transactions: transactionsReducer,
-    modal: headerModalReducer,
-    global: globalReducer,
+    modal: headerModalReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

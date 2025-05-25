@@ -38,7 +38,7 @@ export default function LoginForm() {
       .unwrap()
       .then((res) => {
         toast.success(`Welcome, ${res.name}`);
-        navigate("/dashboard", { replace: true });
+        navigate("/", { replace: true });
         options.resetForm();
       })
       .catch((err) => {

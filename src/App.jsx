@@ -13,28 +13,21 @@ function App() {
   return (
     <Routes>
       {/* Public Routes */}
-      <Route
-        path="/"
-        element={
-          <RestrictedRoute redirectTo="/dashboard" component={<HomeTab />} />
-        }
-      />
       <Route path="/register" element={<RegistrationForm />} />
       <Route
         path="/login"
-        element={
-          <RestrictedRoute redirectTo="/dashboard" component={<LoginPage />} />
-        }
+        element={<RestrictedRoute redirectTo="/" component={<LoginPage />} />}
       />
 
       {/* Protected Routes Layout */}
       <Route
-        path="/dashboard"
+        path="/"
         element={
           <>
             <Header />
             <LogoutModal />
-            <DashboardPage />
+            {/* <DashboardPage /> */}
+            <HomeTab />
           </>
         }
       />

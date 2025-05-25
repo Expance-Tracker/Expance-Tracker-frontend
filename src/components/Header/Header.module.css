@@ -10,7 +10,6 @@
   color: #fcfcfc;
   background: linear-gradient(180deg, #355359 0%, #3b5d63 100%);
   display: flex;
-  justify-content: space-between;
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -37,24 +36,33 @@
   align-items: center;
   max-width: 100%;
   overflow: hidden;
-  margin-left: 58px;
 }
 
 .headerUsername {
-  flex: 1; /* allows it to take available space */
-  min-width: 0; /* prevents flex item from growing unbounded */
-  white-space: nowrap; /* prevents wrapping */
-  overflow: hidden; /* hides overflow */
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.headerLinkStyle {
+.headerButtonStyle {
+  width: 69px;
+  height: 30px;
   display: flex;
   align-items: center;
-  text-decoration: none;
-  color: inherit;
   gap: 3px;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
   transition: color 200ms ease-in-out;
+}
+
+.headerButtonStyle:hover,
+.headerButtonStyle:focus {
+  color: #dfad3f;
 }
 
 .headerLinkStyle:hover,

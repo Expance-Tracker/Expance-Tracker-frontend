@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { authReducer } from "./auth/authSlice";
 import balanceReducer from "./slices/balanceSlice";
 import headerModalReducer from "./slices/headerModalSlice";
+import globalReducer from './global/globalSlice';
 
 import {
   persistStore,
@@ -28,7 +29,8 @@ export const store = configureStore({
   reducer: {
     balance: balanceReducer,
     modal: headerModalReducer,
-    auth: persistedReducer
+    auth: persistedReducer,
+    global: globalReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

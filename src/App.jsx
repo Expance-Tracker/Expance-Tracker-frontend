@@ -11,6 +11,7 @@ import RestrictedRoute from "./components/routes/RestrictedRoute";
 function App() {
   return (
     <Routes>
+      {/* Public Routes */}
       <Route
         path="/"
         element={
@@ -24,7 +25,18 @@ function App() {
           <RestrictedRoute redirectTo="/dashboard" component={<LoginPage />} />
         }
       />
-      <Route path="/dashboard" element={<DashboardPage />} />
+
+      {/* Protected Routes Layout */}
+      <Route
+        path="/dashboard"
+        element={
+          <>
+            <Header />
+            <LogoutModal />
+            <DashboardPage />
+          </>
+        }
+      />
     </Routes>
   );
 }

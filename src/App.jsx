@@ -7,6 +7,7 @@ import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import LogoutModal from "./components/LogoutModal/LogoutModal";
 import Header from "./components/Header/Header";
 import RestrictedRoute from "./components/routes/RestrictedRoute";
+import HomeTab from "./pages/HomeTab/HomeTab";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       <Route
         path="/"
         element={
-          <RestrictedRoute redirectTo="/dashboard" component={<LoginPage />} />
+          <RestrictedRoute redirectTo="/dashboard" component={<HomeTab />} />
         }
       />
       <Route path="/register" element={<RegistrationForm />} />

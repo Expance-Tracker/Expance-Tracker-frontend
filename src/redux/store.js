@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { authReducer } from "./auth/authSlice";
 import balanceReducer from "./slices/balanceSlice";
+import { transactionsReducer } from "./transactions/transactionsSlice";
 import headerModalReducer from "./slices/headerModalSlice";
 
 import {
@@ -26,16 +27,17 @@ const persistedReducer = persistReducer(persistConfig, authReducer);
 
 export const store = configureStore({
   reducer: {
+    auth: persistedReducer,
     balance: balanceReducer,
-    modal: headerModalReducer,
-    auth: persistedReducer
+    transactions: transactionsReducer,
+    modal: headerModalReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
       }
-    }) 
+    })
 });
 
 export const persistor = persistStore(store);

@@ -2,6 +2,7 @@ import css from "./LogoutModal.module.css";
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { closeLogoutModal } from "../../redux/slices/headerModalSlice";
+import { logout } from "../../redux/auth/operations";
 
 export default function LogoutModal() {
   const dispatch = useDispatch();
@@ -33,19 +34,12 @@ export default function LogoutModal() {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch("/api/logout", {
-        method: "POST",
-        credentials: "include"
-      });
-
-      if (response.ok) {
-        // Успішно вийшли можна редіректнути
-        window.location.href = "/login";
-      } else {
-        alert("Error while logging out.");
-      }
+      await dispatch(logout()).unwrap();
+      localStorage.clear();
+      window.location.href = "/login";
     } catch (error) {
-      console.error("Logout error:", error);
+      console.error("Logout failed:", error);
+      alert("Logout failed: " + error);
     }
   };
 

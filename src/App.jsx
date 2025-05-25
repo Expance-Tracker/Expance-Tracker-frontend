@@ -6,14 +6,36 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import LogoutModal from "./components/LogoutModal/LogoutModal";
 import Header from "./components/Header/Header";
+import RestrictedRoute from "./components/routes/RestrictedRoute";
+import HomeTab from "./pages/HomeTab/HomeTab";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<LoginPage />} />
+      {/* Public Routes */}
+      <Route
+        path="/"
+        element={<RestrictedRoute redirectTo="/" component={<HomeTab />} />}
+      />
       <Route path="/register" element={<RegistrationForm />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/dashboard" element={<DashboardPage />} />
+      <Route
+        path="/login"
+        element={
+          <RestrictedRoute redirectTo="/dashboard" component={<LoginPage />} />
+        }
+      />
+
+      {/* Protected Routes Layout */}
+      <Route
+        path="/dashboard"
+        element={
+          <>
+            <Header />
+            <LogoutModal />
+            <DashboardPage />
+          </>
+        }
+      />
     </Routes>
   );
 }

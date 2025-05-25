@@ -18,7 +18,7 @@ const TransactionsList = () => {
     dispatch(getTransactions());
   }, [dispatch]);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return;
   if (error) return <p>Error: {error}</p>;
 
   return (

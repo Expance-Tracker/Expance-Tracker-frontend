@@ -15,7 +15,9 @@ function App() {
       {/* Public Routes */}
       <Route
         path="/"
-        element={<RestrictedRoute redirectTo="/" component={<HomeTab />} />}
+        element={
+          <RestrictedRoute redirectTo="/dashboard" component={<HomeTab />} />
+        }
       />
       <Route path="/register" element={<RegistrationForm />} />
       <Route

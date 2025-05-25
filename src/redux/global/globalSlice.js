@@ -4,7 +4,7 @@ const initialState = {
   isLoading: false,
 };
 
-export const globalSlice = createSlice({
+const globalSlice = createSlice({
   name: 'global',
   initialState,
   reducers: {
@@ -15,4 +15,4 @@ export const globalSlice = createSlice({
 });
 
 export const { setLoading } = globalSlice.actions;
-export default globalSlice.reducer; 
+export default globalSlice.reducer;

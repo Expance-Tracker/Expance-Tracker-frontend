@@ -1,10 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { authReducer } from "./auth/authSlice";
 import balanceReducer from "./slices/balanceSlice";
+import { transactionsReducer } from "./transactions/transactionsSlice";
 import headerModalReducer from "./slices/headerModalSlice";
 import statisticsReducer from "./slices/statisticsSlice"; // ✅ додати, якщо ще не підключено
 import transactionsReducer from "./slices/transactionsSlice"; // ✅ додаємо
-
+import categoriesReducer from "./slices/categoriesSlice";
+import globalReducer from "./global/globalSlice";
+import deleteModalReducer from "./transactions/deleteModalSlice";
 import {
   persistStore,
   persistReducer,
@@ -20,8 +23,7 @@ import storage from "redux-persist/lib/storage";
 const persistConfig = {
   key: "auth-data",
   version: 1,
-  storage,
-  whitelist: ["token", "value"]
+  storage
 };
 
 const persistedReducer = persistReducer(persistConfig, authReducer);
@@ -30,9 +32,13 @@ export const store = configureStore({
   reducer: {
     auth: persistedReducer,
     balance: balanceReducer,
+    transactions: transactionsReducer,
     modal: headerModalReducer,
     statistics: statisticsReducer,     // ✅ додаємо, якщо ще не було
     transactions: transactionsReducer, // ✅ вставили сюди
+    global: globalReducer,
+    categories: categoriesReducer,
+    deleteModal: deleteModalReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

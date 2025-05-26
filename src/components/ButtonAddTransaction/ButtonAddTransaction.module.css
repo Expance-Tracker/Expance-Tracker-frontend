@@ -1,0 +1,51 @@
+.addBtn {
+  width: 56px;
+  height: 56px;
+  padding: 5px;
+  border-radius: 100%;
+  background: none;
+  background-color: #508f8c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.plusIcon {
+  width: 36px;
+  height: 36px;
+  color: #081222;
+}
+
+.addBtn:hover {
+  background-color: #3b7f7b;
+}
+
+@media screen and (min-width: 768px) {
+  .addBtn {
+    width: 64px;
+    height: 64px;
+    bottom: 48px;
+    right: 48px;
+  }
+
+  .plusIcon {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .addBtn {
+    width: 56px;
+    height: 56px;
+  }
+
+  .plusIcon {
+    width: 36px;
+    height: 36px;
+  }
+}

@@ -39,7 +39,7 @@
 .icon_modal {
   width: 54px;
   height: 54px;
-  background: url("/src/assets/register/reg_logo.png") no-repeat center/contain;
+  background: url("/src/assets/register/reg_logo.webp") no-repeat center/contain;
 }
 .title_modal {
   font-family: "Poppins", sans-serif;
@@ -80,7 +80,10 @@ button {
   color: #081222;
   background: #508f8c;
 }
-
+button:hover {
+  background: #2c4747;
+  color: #fcfcfc;
+}
 @media (min-width: 768px) {
   .logout_modal {
     width: 533px;

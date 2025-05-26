@@ -7,6 +7,7 @@ import categoriesReducer from "./slices/categoriesSlice";
 import globalReducer from "./global/globalSlice";
 import deleteModalReducer from "./transactions/deleteModalSlice";
 
+
 import {
   persistStore,
   persistReducer,

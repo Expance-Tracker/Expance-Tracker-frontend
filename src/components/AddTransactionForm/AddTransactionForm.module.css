@@ -1,0 +1,211 @@
+.smallContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.inputsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.toggleContainer {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.toggleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.toggleLabel {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: right;
+  color: #081222;
+}
+
+.toggleSwitch {
+  position: relative;
+  width: 87px;
+  height: 40px;
+  background-color: #fcfcfc;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggleButton {
+  position: absolute;
+  top: -2px;
+  width: 48px;
+  height: 44px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toggleButtonLeft {
+  left: -4px;
+  background-color: #dfad3f;
+}
+
+.toggleButtonRight {
+  left: 41px;
+  background-color: #b20202;
+}
+
+.toggleIcon {
+  height: 28px;
+  width: 28px;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.iconComponent {
+  width: 28px;
+  height: 28px;
+}
+
+.selectInput {
+  width: 100%;
+}
+
+.amountInput {
+  width: 100%;
+  padding: 10px 14px;
+  height: 44px;
+  outline: none;
+  background-color: transparent;
+  border: solid 1px #294045;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #081222;
+}
+
+.amountInput::placeholder {
+  color: #38585e;
+}
+
+.datePickerWrapper {
+  width: 100%;
+  height: 44px;
+  border: solid 1px #294045;
+  border-radius: 8px;
+  position: relative;
+}
+
+.dateInput {
+  width: 100%;
+  height: 44px;
+  padding: 10px 14px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #081222;
+}
+
+.dateIcon {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 14px;
+  top: 10px;
+}
+
+.comment {
+  padding: 10px 14px;
+  width: 100%;
+  height: 42px;
+  outline: none;
+  background-color: transparent;
+  border: solid 1px #294045;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #081222;
+}
+
+.comment::placeholder {
+  color: #38585e;
+}
+
+.errorMessage {
+  color: #b20202;
+  font-size: 12px;
+  font-family: "Inter", sans-serif;
+  margin-left: 4px;
+}
+
+.submitBtn {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.closeBtn {
+  margin-top: 12px;
+  width: 100%;
+  border: 1px solid #081222;
+  background: none;
+  background-color: transparent;
+  color: #081222;
+}
+
+@media screen and (min-width: 768px) {
+  .smallContainer {
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  .inputsContainer {
+    gap: 36px;
+  }
+
+  .toggleContainer {
+    margin: 40px 0 32px;
+  }
+
+  .toggleSwitch {
+    width: 80px;
+  }
+
+  .toggleButton {
+    width: 44px;
+  }
+
+  .toggleButtonRight {
+    left: 37px;
+  }
+
+  .amountInput {
+    width: 193px;
+  }
+
+  .dateInput {
+    width: 193px;
+  }
+
+  .submitBtn {
+    margin-right: 38px;
+  }
+
+  .closeBtn {
+    margin-top: 21px;
+  }
+}

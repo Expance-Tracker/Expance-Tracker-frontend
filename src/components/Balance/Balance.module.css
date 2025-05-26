@@ -1,0 +1,72 @@
+/* === Мобільні (до 768px) === */
+.balance-card {
+  padding: 16px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #355359 0%, #3b5d63 100%);
+  color: #ffffff;
+  text-align: center;
+  width: 100%;
+  min-width: 288px;
+  min-height: 115px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.balance-label {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 8px;
+}
+
+.balance-amount {
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 12px;
+}
+
+/* === Планшети (768px до 1023px) === */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .balance-card {
+    padding: 24px;
+    border-radius: 16px;
+    min-width: 338px;
+    min-height: 143px;
+  }
+
+  .balance-label {
+    font-size: 14px;
+  }
+
+  .balance-amount {
+    font-size: 32px;
+  }
+
+  .refresh-button {
+    font-size: 16px;
+  }
+}
+
+/* === ПК (від 1024px) === */
+@media (min-width: 1024px) {
+  .balance-card {
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    text-align: left;
+  }
+
+  .balance-label {
+    font-size: 14px;
+    color: #6e6e6e;
+  }
+
+  .balance-amount {
+    font-size: 36px;
+    color: #ffffff;
+  }
+
+  .refresh-button {
+    margin-top: 12px;
+  }
+}

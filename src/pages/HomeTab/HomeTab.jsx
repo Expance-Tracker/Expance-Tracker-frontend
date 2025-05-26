@@ -1,16 +1,13 @@
 import Balance from "../../components/Balance/Balance";
+import ButtonAddTransaction from "../../components/ButtonAddTransaction/ButtonAddTransaction";
 import Currency from "../../components/Currency/Currency";
 import Navigation from "../../components/NavLink/Navigation";
 import TransactionsList from "../../components/Transactions/TransactionsList";
+import { fetchCategories } from "../../redux/slices/categoriesSlice";
 import { setLoading } from "../../redux/global/globalSlice";
 import styles from "./HomeTab.module.css";
-
-import { setLoading } from "../../redux/global/globalSlice";
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchCategories } from "../../redux/slices/categoriesSlice";
-import ButtonAddTransaction from "../../components/ButtonAddTransaction/ButtonAddTransaction";
-
+import { useEffect } from "react";
 
 const HomeTab = () => {
   const dispatch = useDispatch();

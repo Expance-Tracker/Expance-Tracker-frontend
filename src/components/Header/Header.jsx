@@ -35,3 +35,5 @@ export default function Header() {
     </header>
   );
 }
+
+// Updated src for image

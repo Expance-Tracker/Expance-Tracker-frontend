@@ -9,11 +9,12 @@ import RestrictedRoute from "./components/routes/RestrictedRoute";
 import HomeTab from "./pages/HomeTab/HomeTab";
 import StatisticsTab from "./pages/StatisticsTab/StatisticsTab";
 import Loader from "./components/Loader/Loader";
+import Delete from "./components/Delete/Delete";
 import Navigation from "./components/NavLink/Navigation";
 import CurrencyTab from "./pages/CurrencyTab/CurrencyTab";
 
 function App() {
-  const isLoading = useSelector(state => state.global?.isLoading ?? false);
+  const isLoading = useSelector((state) => state.global?.isLoading ?? false);
 
   return (
     <div className="app-container">
@@ -36,6 +37,7 @@ function App() {
                 <HomeTab />
               </div>
               <LogoutModal />
+              <Delete />
             </>
           }
         />
@@ -49,6 +51,7 @@ function App() {
                 <StatisticsTab />
               </div>
               <LogoutModal />
+              <Delete />
             </>
           }
         />
@@ -62,6 +65,7 @@ function App() {
                 <CurrencyTab />
               </div>
               <LogoutModal />
+              <Delete />
             </>
           }
         />

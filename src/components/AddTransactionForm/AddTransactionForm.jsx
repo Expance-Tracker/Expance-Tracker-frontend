@@ -10,7 +10,7 @@ import s from "./AddTransactionForm.module.css";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import * as Yup from "yup";
 import toast from "react-hot-toast";
-import api from "../../api/axiosConfig";
+import axios from "axios";
 
 // Стрілка в дропдауні
 const CustomDropdownIndicator = (props) => {
@@ -119,6 +119,7 @@ const IncomeExpenseToggle = ({ field, form }) => {
 
 //Форма додавання транзакції
 const AddTransactionForm = ({ onClose }) => {
+  const token = useSelector((state) => state.auth.token);
   const categories = useSelector((state) => state.categories.items);
   const categoryOptions = categories.map((item) => ({
     value: item.name,
@@ -139,11 +140,13 @@ const AddTransactionForm = ({ onClose }) => {
       date: values.date ? values.date.toISOString().split("T")[0] : null
     };
 
-    console.log(formattedValues);
-
     try {
-      const response = await api.post("transactions", formattedValues);
-      console.log(response.data);
+      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+
+      const { data } = await axios.post("/transactions", formattedValues);
+
+      toast.success(data.message);
+      onClose();
     } catch (e) {
       toast.error(e.message);
     }
@@ -231,16 +234,18 @@ const AddTransactionForm = ({ onClose }) => {
                   />
                 </div>
               </div>
-              <Field
-                className={s.comment}
-                placeholder="Comment"
-                name="comment"
-              />
-              <ErrorMessage
-                name="comment"
-                component="span"
-                className={s.errorMessage}
-              />
+              <div>
+                <Field
+                  className={s.comment}
+                  placeholder="Comment"
+                  name="comment"
+                />
+                <ErrorMessage
+                  name="comment"
+                  component="span"
+                  className={s.errorMessage}
+                />
+              </div>
             </div>
             <button className={s.submitBtn} type="submit">
               Add

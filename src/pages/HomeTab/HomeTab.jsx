@@ -10,7 +10,7 @@ const HomeTab = () => {
 
   useEffect(() => {
     dispatch(setLoading(true));
-    setTimeout(() => dispatch(setLoading(false)), 3000);
+    setTimeout(() => dispatch(setLoading(false)), 2000);
   }, [dispatch]);
 
   return (

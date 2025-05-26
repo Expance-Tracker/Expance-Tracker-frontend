@@ -10,7 +10,7 @@ export default function Header() {
     <header className={css.header}>
       <div className={css.headerLogo}>
         <img
-          src="/src/assets/register/reg_logo.png"
+          src="/src/assets/register/reg_logo.webp"
           width={30.9}
           height={30.9}
           alt="Logo Image"

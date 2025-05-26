@@ -111,6 +111,11 @@
   padding: 4px 12px;
 }
 
+.icon {
+  width: 14px;
+  height: 14px;
+}
+
 .edit {
   padding-left: 4px;
 }
@@ -123,9 +128,23 @@
   display: none;
 }
 
+.noTransactions {
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  color: #fcfcfc;
+}
+
 @media screen and (min-width: 768px) {
   .mobileDiv {
     display: none;
+  }
+
+  .noTransactionsTablet {
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    color: #fcfcfc;
   }
 
   .tablet {
@@ -225,6 +244,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-right: 15px;
   }
 
   .icon {
@@ -247,5 +267,31 @@
 
   .buttonsHeader {
     width: 100px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .tablet {
+    margin: 0 auto;
+    max-width: 757px;
+    height: 585px;
+    padding: 32px 27px;
+  }
+
+  .headerRow {
+    grid-template-columns: 121px 95px 125px 1fr 142px 35px;
+  }
+
+  .row {
+    grid-template-columns: 121px 95px 125px 1fr 142px 35px;
+  }
+
+  .typeItems {
+    margin-right: 15px;
+    text-align: center;
+  }
+
+  .categoryItems {
+    margin-right: 20px;
   }
 }

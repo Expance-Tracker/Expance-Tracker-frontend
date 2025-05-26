@@ -32,4 +32,4 @@ export default function Header() {
   );
 }
 
-// Updated src for image
+// Updated src for images

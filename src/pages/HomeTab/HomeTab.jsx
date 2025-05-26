@@ -4,15 +4,23 @@ import Navigation from "../../components/NavLink/Navigation";
 import TransactionsList from "../../components/Transactions/TransactionsList";
 import { setLoading } from "../../redux/global/globalSlice";
 import styles from "./HomeTab.module.css";
-import { useDispatch } from "react-redux";
+
+import { setLoading } from "../../redux/global/globalSlice";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchCategories } from "../../redux/slices/categoriesSlice";
+import ButtonAddTransaction from "../../components/ButtonAddTransaction/ButtonAddTransaction";
+
 
 const HomeTab = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(setLoading(true));
-    setTimeout(() => dispatch(setLoading(false)), 2000);
+    setTimeout(() => dispatch(setLoading(false)), 3000);
+
+    //Отримання категорій
+    dispatch(fetchCategories());
   }, [dispatch]);
 
   return (
@@ -25,6 +33,7 @@ const HomeTab = () => {
         <Currency />
       </div>
       <TransactionsList />
+      <ButtonAddTransaction />
     </div>
   );
 };

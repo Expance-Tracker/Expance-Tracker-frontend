@@ -6,8 +6,12 @@ import CurrencyTab from "./pages/CurrencyTab/CurrencyTab";
 import Header from "./components/Header/Header";
 import HomeTab from "./pages/HomeTab/HomeTab";
 import Loader from "./components/Loader/Loader";
+
 import LoginPage from "./pages/LoginPage/LoginPage";
 import LogoutModal from "./components/LogoutModal/LogoutModal";
+
+import Delete from "./components/Delete/Delete";
+
 import Navigation from "./components/NavLink/Navigation";
 import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
 import RestrictedRoute from "./components/routes/RestrictedRoute";
@@ -15,7 +19,7 @@ import StatisticsTab from "./pages/StatisticsTab/StatisticsTab";
 import { useSelector } from "react-redux";
 
 function App() {
-  const isLoading = useSelector(state => state.global?.isLoading ?? false);
+  const isLoading = useSelector((state) => state.global?.isLoading ?? false);
 
   return (
     <div className="app-container">
@@ -37,6 +41,7 @@ function App() {
                 <HomeTab />
               </div>
               <LogoutModal />
+              <Delete />
             </>
           }
         />
@@ -50,6 +55,7 @@ function App() {
                 <StatisticsTab />
               </div>
               <LogoutModal />
+              <Delete />
             </>
           }
         />
@@ -63,6 +69,7 @@ function App() {
                 <CurrencyTab />
               </div>
               <LogoutModal />
+              <Delete />
             </>
           }
         />

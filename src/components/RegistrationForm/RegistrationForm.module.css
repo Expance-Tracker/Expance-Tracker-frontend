@@ -20,11 +20,12 @@
 .register-logo {
   width: 54px;
   height: 54px;
-  background: url("/src/assets/register/reg_logo.png") no-repeat center/contain;
+  background: url("/src/assets/register/reg_logo.webp") no-repeat center/contain;
 }
 
 .register-title {
-  font-size: 32px;
+  font-family: poppins;
+  font-size: 30px;
   font-weight: 700;
   margin-bottom: 24px;
   color: #081222;
@@ -146,6 +147,10 @@
 
   .wallet-image-registration {
     display: block;
+    bottom: 20px;
+    right: 20px;
+    max-width: 240px;
+    width: 25%;
   }
 }
 
@@ -153,5 +158,14 @@
   .register-card {
     max-width: 420px;
     padding: 40px 40px;
+  }
+}
+
+@media (min-width: 1240px) {
+  .wallet-image-registration {
+    max-width: 300px;
+    width: 30%;
+    bottom: 10%;
+    right: 10%;
   }
 }

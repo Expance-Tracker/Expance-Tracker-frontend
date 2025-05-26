@@ -111,6 +111,11 @@
   padding: 4px 12px;
 }
 
+.icon {
+  width: 14px;
+  height: 14px;
+}
+
 .edit {
   padding-left: 4px;
 }
@@ -225,6 +230,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-right: 15px;
   }
 
   .icon {
@@ -247,5 +253,31 @@
 
   .buttonsHeader {
     width: 100px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .tablet {
+    margin: 0 auto;
+    max-width: 757px;
+    height: 585px;
+    padding: 32px 27px;
+  }
+
+  .headerRow {
+    grid-template-columns: 121px 95px 125px 1fr 142px 35px;
+  }
+
+  .row {
+    grid-template-columns: 121px 95px 125px 1fr 142px 35px;
+  }
+
+  .typeItems {
+    margin-right: 15px;
+    text-align: center;
+  }
+
+  .categoryItems {
+    margin-right: 20px;
   }
 }

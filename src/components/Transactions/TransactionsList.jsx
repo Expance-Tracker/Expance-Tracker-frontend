@@ -4,6 +4,7 @@ import TransactionsItem from "./TransactionsItem";
 import { Pencil } from "lucide-react";
 import { useEffect } from "react";
 import { getTransactions } from "../../redux/transactions/operations";
+import { openDeleteModal } from "../../redux/transactions/deleteModalSlice";
 
 const TransactionsList = () => {
   const dispatch = useDispatch();
@@ -52,7 +53,7 @@ const TransactionsList = () => {
               }`}
             >
               <div className={`${styles.cellItems} ${styles.dataItems}`}>
-                {item.date}
+                {new Date(item.date).toLocaleDateString("en-CA")}
               </div>
 
               <div className={`${styles.cellItems} ${styles.typeItems}`}>
@@ -79,7 +80,12 @@ const TransactionsList = () => {
                 <button className={styles.editButtonTablet}>
                   <Pencil className={styles.icon} />
                 </button>
-                <button className={styles.deleteTablet}>Delete</button>
+                <button
+                  className={styles.deleteTablet}
+                  onClick={() => dispatch(openDeleteModal(item._id))}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           ))}

@@ -9,9 +9,10 @@ import Header from "./components/Header/Header";
 import RestrictedRoute from "./components/routes/RestrictedRoute";
 import HomeTab from "./pages/HomeTab/HomeTab";
 import Loader from "./components/Loader/Loader";
+import Delete from "./components/Delete/Delete";
 
 function App() {
-  const isLoading = useSelector(state => state.global?.isLoading ?? false);
+  const isLoading = useSelector((state) => state.global?.isLoading ?? false);
 
   return (
     <>
@@ -31,6 +32,7 @@ function App() {
               <Header />
               <LogoutModal />
               <HomeTab />
+              <Delete />
             </>
           }
         />

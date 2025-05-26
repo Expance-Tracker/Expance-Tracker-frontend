@@ -14,7 +14,7 @@ const Navigation = () => {
               `${styles.navLink} ${styles.navLinkActive}` : styles.navLink}
           >
             <div className={styles.navIcon}>
-              <HomeIcon width={18} height={18} style={{ display: 'block' }} />
+              <HomeIcon />
             </div>
             <span>Home</span>
           </NavLink>
@@ -26,7 +26,7 @@ const Navigation = () => {
               `${styles.navLink} ${styles.navLinkActive}` : styles.navLink}
           >
             <div className={styles.navIcon}>
-              <StatsIcon width={18} height={18} style={{ display: 'block' }} />
+              <StatsIcon />
             </div>
             <span>Statistics</span>
           </NavLink>
@@ -38,7 +38,7 @@ const Navigation = () => {
               `${styles.navLink} ${styles.navLinkActive}` : styles.navLink}
           >
             <div className={styles.navIcon}>
-              <CurrencyIcon width={18} height={18} style={{ display: 'block' }} />
+              <CurrencyIcon />
             </div>
             <span>Currency</span>
           </NavLink>

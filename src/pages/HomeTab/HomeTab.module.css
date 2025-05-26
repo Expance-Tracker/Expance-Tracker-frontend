@@ -1,17 +1,19 @@
-.container {
-  margin-top: 32px;
-}
 
-@media (min-width: 1280px) {
+@media screen and (min-width: 1280px) {
   .container {
 
     margin-right: 24px;
   }
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
 
   .container {
     margin-right: 32px;
+    margin-top: 32px;
   }
+}
+
+@media screen and (max-width: 320px) {
+  margin-top: 0px;
 }

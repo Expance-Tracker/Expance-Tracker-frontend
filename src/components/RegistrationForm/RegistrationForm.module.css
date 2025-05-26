@@ -1,0 +1,171 @@
+.register-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-card {
+  background: #508f8c;
+  border-radius: 12px;
+  padding: 26px 16px;
+  width: 90vw;
+  max-width: 340px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-logo {
+  width: 54px;
+  height: 54px;
+  background: url("/src/assets/register/reg_logo.webp") no-repeat center/contain;
+}
+
+.register-title {
+  font-family: poppins;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #081222;
+}
+
+.form-group-registration {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.form-input-register {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #2c4747;
+  background: #508f8c;
+  color: #102828;
+  font-size: 1rem;
+  outline: none;
+}
+
+.form-input-register::placeholder {
+  color: #081222;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.form-input-register:focus {
+  border-color: #0b6016;
+}
+
+.form-error-register {
+  color: #c90202;
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+.backend-error-register {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.register-btn,
+.login-link-register {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1;
+  min-height: 44px;
+  box-sizing: border-box;
+}
+
+.register-btn {
+  background: linear-gradient(0deg, #3b5d63, #355359);
+  color: #fff;
+  border: none;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.login-link-register {
+  border: 1px solid #2c4747;
+  background: transparent;
+  color: #102828;
+  text-decoration: none;
+  margin-top: 4px;
+}
+
+.login-link-register:hover,
+.register-btn:hover {
+  background: #2c4747;
+  color: #fcfcfc;
+}
+
+.password-bar > p {
+  color: #081222 !important;
+  font-size: 10px !important;
+}
+
+.wallet-image-registration {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  max-width: 240px;
+  width: 25%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.input-with-icon-register {
+  position: relative;
+}
+
+.input-icon-register {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #081222;
+  font-size: 18px;
+  pointer-events: none;
+}
+
+.input-with-icon-register .form-input-register {
+  padding-left: 38px;
+}
+
+@media (min-width: 768px) {
+  .register-card {
+    max-width: 400px;
+    padding: 32px 32px;
+  }
+
+  .wallet-image-registration {
+    display: block;
+    bottom: 20px;
+    right: 20px;
+    max-width: 240px;
+    width: 25%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .register-card {
+    max-width: 420px;
+    padding: 40px 40px;
+  }
+}
+
+@media (min-width: 1240px) {
+  .wallet-image-registration {
+    max-width: 300px;
+    width: 30%;
+    bottom: 10%;
+    right: 10%;
+  }
+}

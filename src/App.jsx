@@ -1,38 +1,106 @@
-import './App.css'
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import LoginPage from './pages/LoginPage';
-import RegistrationPage from './pages/RegistrationPage';
-import DashboardPage from './pages/DashboardPage';
-import HomeTab from './pages/HomeTab';
-import CurrencyTab from './pages/CurrencyTab';
-import StatisticsTab from './pages/StatisticsTab';
-import EditTransaction from './pages/EditTransaction';
+import './App.css';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+// компоненти й сторінки
+import RegistrationForm  from './components/RegistrationForm/RegistrationForm';
+import LoginPage         from './pages/LoginPage/LoginPage';
+import LogoutModal       from './components/LogoutModal/LogoutModal';
+import Header            from './components/Header/Header';
+import RestrictedRoute   from './components/routes/RestrictedRoute';
+import HomeTab           from './pages/HomeTab/HomeTab';
+import StatisticsTab     from './pages/StatisticsTab/StatisticsTab';
+import CurrencyTab       from './pages/CurrencyTab/CurrencyTab';
+import EditTransaction   from './pages/EditTransaction';
+import Loader            from './components/Loader/Loader';
+import Delete            from './components/Delete/Delete';
+import Navigation        from './components/NavLink/Navigation';
 
 export default function App() {
+  const isLoading = useSelector(state => state.global?.isLoading ?? false);
+
   return (
-    <BrowserRouter>
+    <div className="app-container">
       <Routes>
-        {/* публічні */}
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegistrationPage />} />
-
-        {/* основний інтерфейс */}
-        <Route path="/" element={<DashboardPage />}>
-          <Route index element={<HomeTab />} />
-          <Route path="currency" element={<CurrencyTab />} />
-          <Route path="statistics" element={<StatisticsTab />} />
-        </Route>
-
-        {/* окремий шлях для редагування */}
+        {/* Public Routes */}
+        <Route path="/register" element={<RegistrationForm />} />
         <Route
-          path="/transactions/edit/:id"
-          element={<EditTransaction />}
+          path="/login"
+          element={
+            <RestrictedRoute
+              redirectTo="/"
+              component={<LoginPage />}
+            />
+          }
         />
 
-        {/* будь-який інший шлях */}
-        <Route path="*" element={<Navigate to="/" />} />
+        {/* Protected Routes */}
+        <Route
+          path="/"
+          element={
+            <>
+              <Header />
+              <div className="page-content">
+                <Navigation />
+                <HomeTab />
+              </div>
+              <LogoutModal />
+              <Delete />
+            </>
+          }
+        />
+        <Route
+          path="/statistics"
+          element={
+            <>
+              <Header />
+              <div className="page-content">
+                <Navigation />
+                <StatisticsTab />
+              </div>
+              <LogoutModal />
+              <Delete />
+            </>
+          }
+        />
+        <Route
+          path="/currency"
+          element={
+            <>
+              <Header />
+              <div className="page-content">
+                <Navigation />
+                <CurrencyTab />
+              </div>
+              <LogoutModal />
+              <Delete />
+            </>
+          }
+        />
+
+        {/* Edit Transaction */}
+        <Route
+          path="/transactions/edit/:id"
+          element={
+            <>
+              <Header />
+              <div className="page-content">
+                <Navigation />
+                <EditTransaction />
+              </div>
+              <LogoutModal />
+              <Delete />
+            </>
+          }
+        />
+
+        {/* Fallback */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </BrowserRouter>
+
+      {isLoading && <Loader />}
+    </div>
   );
 }
+

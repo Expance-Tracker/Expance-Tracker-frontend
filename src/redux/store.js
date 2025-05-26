@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { authReducer } from "./auth/authSlice";
 import balanceReducer from "./slices/balanceSlice";
+import { transactionsReducer } from "./transactions/transactionsSlice";
 import headerModalReducer from "./slices/headerModalSlice";
 import categoriesReducer from "./slices/categoriesSlice";
+import globalReducer from "./global/globalSlice";
 
 import {
   persistStore,
@@ -27,9 +29,11 @@ const persistedReducer = persistReducer(persistConfig, authReducer);
 
 export const store = configureStore({
   reducer: {
-    balance: balanceReducer,
-    modal: headerModalReducer,
     auth: persistedReducer,
+    balance: balanceReducer,
+    transactions: transactionsReducer,
+    modal: headerModalReducer,
+    global: globalReducer,
     categories: categoriesReducer
   },
   middleware: (getDefaultMiddleware) =>

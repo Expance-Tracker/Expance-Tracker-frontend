@@ -32,6 +32,7 @@ const HomeTab = () => {
       <TransactionsList />
       <ButtonAddTransaction />
     </div>
+    // dobry den
   );
 };
 

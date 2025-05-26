@@ -1,6 +1,5 @@
 body {
   font-family: "Arial", "Helvetica", "Inter Tight", sans-serif;
-  line-height: 1.5;
   box-sizing: border-box;
 }
 
@@ -45,4 +44,15 @@ form {
   margin: 0;
   padding: 0;
   width: 100%;
+}
+
+.page-content {
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+}
+
+svg {
+  vertical-align: middle;
+  shape-rendering: crispEdges;
 }

@@ -12,13 +12,19 @@ const Toggle = () => {
     dispatch(setType(nextType));
   };
 
+  const isIncome = type === 'income';
+
   return (
-    <div className="toggle-wrapper">
-      <span className={type === 'income' ? 'active-label' : ''}>Income</span>
-      <div className={`toggle-switch ${type}`} onClick={handleToggle}>
-        <div className="toggle-thumb" />
+    <div className="toggle-container">
+      <span className={`toggle-label ${isIncome ? 'active' : ''}`}>Income</span>
+
+      <div onClick={handleToggle} className="toggle-switch">
+        <div className={`toggle-thumb ${isIncome ? 'income' : 'expense'}`}>
+          {isIncome ? '+' : '−'}
+        </div>
       </div>
-      <span className={type === 'expense' ? 'active-label' : ''}>Expense</span>
+
+      <span className={`toggle-label ${!isIncome ? 'active' : ''}`}>Expense</span>
     </div>
   );
 };

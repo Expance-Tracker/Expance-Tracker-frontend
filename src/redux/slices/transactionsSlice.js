@@ -7,20 +7,29 @@ export const fetchTransactions = createAsyncThunk(
     try {
       const state = thunkAPI.getState();
       const token = state.auth.token || state.auth.value?.token;
-      const period = state.statistics.period;
+      const period = state.statistics.period; // ➜ "YYYY-MM"
       const type = state.statistics.type;
 
       const response = await axios.get(
-        `http://localhost:3000/api/transactions/statistics`,
+        'https://expance-tracker-backend-9zu7.onrender.com/statistics/summary',
         {
-          params: { period, type },
+          params: { month: period, type }, // 💥 Додано type
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
 
-      return response.data; // { Food: 120, Transport: 80, ... }
+      console.log('API response:', response.data); // Перевіримо тепер
+
+      const summary = {};
+      if (response.data && Array.isArray(response.data.categories)) {
+        response.data.categories.forEach(({ category, total }) => {
+          summary[category] = total;
+        });
+      }
+
+      return summary;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

@@ -1,0 +1,63 @@
+.period-select-wrapper {
+    display: flex;
+    flex-direction: row;
+    /* ✅ завжди в один ряд */
+    gap: 16px;
+    justify-content: center;
+    /* по центру на мобілці, або змінюй при потребі */
+    width: 100%;
+    max-width: 395px;
+    margin: 0 auto 16px;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+.period-select-wrapper select option {
+    background-color: #1f2a35;
+    /* темне тло */
+    color: #fff;
+    /* білий текст */ }
+.period-select-wrapper select {
+    flex: 1 1 0%;
+    min-width: 0;
+    width: 50%;
+    height: 44px;
+    border: 1.5px solid #fff;
+    border-radius: 12px;
+    background: transparent url("data:image/svg+xml;utf8,<svg width='14' height='8' viewBox='0 0 14 8' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M1 1.5L7 6.5L13 1.5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat right 14px center/16px 10px;
+    padding: 10px 36px 10px 16px;
+    font-size: 1.1rem;
+    color: #fff;
+    appearance: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.period-select-wrapper select:focus {
+    border-color: #ffd500;
+ }
+ @media (min-width: 768px) and (max-width: 1199px) {
+     .period-select-wrapper {
+         flex-direction: row;
+         justify-content: flex-end;
+         gap: 16px;
+         width: 395px;
+         max-width: 395px;
+         margin: 0;
+         padding: 0;
+     }
+
+     .period-select-wrapper select {
+         flex: 1 1 0%;
+         width: 50%;
+         max-width: unset;
+     }
+ }
+
+ /* ======== DESKTOP (1200px+) ======== */
+ @media (min-width: 1200px) {
+     .period-select-wrapper {
+         max-width: 420px;
+     } }

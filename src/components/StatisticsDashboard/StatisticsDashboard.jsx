@@ -1,45 +1,33 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { setPeriod } from '../../redux/slices/statisticsSlice';
-import { selectPeriod } from '../../redux/slices/statisticsSelectors';
+
+import Toggle from '../Toggle/Toggle';
+import Chart from '../Chart/Chart';
+import PeriodSelector from './PeriodSelector';
+import StatisticsTable from '../StatisticsTable/StatisticsTable';
 import './StatisticsDashboard.css';
 
-const months = [
-  'January', 'February', 'March', 'April', 'May', 'June',
-  'July', 'August', 'September', 'October', 'November', 'December'
-];
 
-const years = [2023, 2024, 2025];
-
-const StatisticsDashboard = () => {
-  const dispatch = useDispatch();
-  const period = useSelector(selectPeriod);
-  const [year, month] = period.split('-');
-  const monthName = months[+month - 1];
-
-  const handleMonthChange = (e) => {
-    const newMonth = String(months.indexOf(e.target.value) + 1).padStart(2, '0');
-    dispatch(setPeriod(`${year}-${newMonth}`));
-  };
-
-  const handleYearChange = (e) => {
-    dispatch(setPeriod(`${e.target.value}-${month}`));
-  };
-
-  return (
-    <div className="period-select-wrapper">
-      <select value={monthName} onChange={handleMonthChange}>
-        {months.map((m) => (
-          <option key={m} value={m}>{m}</option>
-        ))}
-      </select>
-
-      <select value={year} onChange={handleYearChange}>
-        {years.map((y) => (
-          <option key={y} value={y}>{y}</option>
-        ))}
-      </select>
+    export default function StatisticsDashboard() {
+      return (
+        <section className="statistics-dashboard">
+  <div className="statistics-dashboard__top-bar">
+    <div className="statistics-dashboard__toggle-wrapper">
+      <Toggle />
     </div>
-  );
-};
+    <div className="statistics-dashboard__period-wrapper">
+      <PeriodSelector />
+    </div>
+  </div>
 
-export default StatisticsDashboard;
+  <div className="statistics-dashboard__content">
+    <div className="statistics-dashboard__chart">
+      <Chart />
+    </div>
+    <div className="statistics-dashboard__table">
+      <StatisticsTable />
+            </div>
+            
+  </div>
+</section>
+      );
+    }
+

@@ -1,14 +1,53 @@
 .chart-container {
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto 24px auto;
+    padding: 1.5rem 1rem;
     background-color: #273845;
-    padding: 2rem;
     border-radius: 1rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin-bottom: 2rem;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
+    box-sizing: border-box;
 }
 
 .no-data {
     text-align: center;
-    color: #ccc; }
+    color: #ccc;
+    font-size: 1rem;
+    padding: 1rem 0;
+}
+.period-select-wrapper {
+    display: flex;
+    gap: 16px;
+    max-width: 395px;
+    width: 100%;
+    justify-content: flex-end; }
+
+/* ======== TABLET (768px – 1199px) ======== */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .chart-container {
+        width: 100%;
+        max-width: 340px;
+        padding: 2rem;
+        margin: 0;
+    }
+
+    .statistics-dashboard__chart {
+        flex: 0 0 340px;
+        max-width: 340px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+/* ======== DESKTOP (1200px+) ======== */
+@media (min-width: 1200px) {
+    .chart-container {
+        max-width: 400px;
+        padding: 2rem;
+    }
+
+    .statistics-dashboard__chart {
+        flex: 0 0 400px;
+        max-width: 400px;
+    } }

@@ -1,18 +1,23 @@
+/* === Базовий контейнер === */
 .table-container {
     background-color: #273845;
     padding: 2rem;
     border-radius: 1rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     margin-bottom: 2rem;
-    max-width: 900px;
+    width: 100%;
+    max-width: 395px;
     margin-left: auto;
     margin-right: auto;
+    box-sizing: border-box;
 }
 
+/* === Таблиця === */
 .statistics-table {
     width: 100%;
     border-collapse: collapse;
     color: white;
+    font-size: 1rem;
 }
 
 .statistics-table th,
@@ -26,6 +31,7 @@
     text-align: right;
 }
 
+/* === Total === */
 .statistics-total {
     text-align: right;
     margin-top: 1rem;
@@ -41,6 +47,9 @@
     color: #4ade80;
 }
 
+/* === No data message === */
 .no-data {
     text-align: center;
-    color: #ccc; }
+    color: #ccc;
+    font-size: 1rem;
+    padding: 1rem 0; }

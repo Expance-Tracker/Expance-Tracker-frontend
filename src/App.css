@@ -1,5 +1,5 @@
 /* в дизі цей колір йде на всі сторінки, тому задала глобально
-не змінюйте! */ 
+не змінюйте! */
 body {
   font-family: "Arial", "Helvetica", "Inter Tight", sans-serif;
   box-sizing: border-box;
@@ -31,8 +31,6 @@ img {
   max-width: 100%;
 }
 
-
-
 /* скидаю стилі для h2  */
 h2 {
   margin-top: 0;
@@ -55,12 +53,11 @@ svg {
   vertical-align: middle;
   shape-rendering: crispEdges;
 }
-}
 
 @media (max-width: 768px) {
   .page-content {
-      display:block;
-      flex: 1;
-      justify-content: space-around;
-    }
+    display: block;
+    flex: 1;
+    justify-content: space-around;
+  }
 }

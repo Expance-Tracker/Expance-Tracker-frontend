@@ -4,6 +4,7 @@ import { IoExitOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { openLogoutModal } from "../../redux/slices/headerModalSlice";
 import { selectName } from "../../redux/auth/selectors";
+import headerLogo from "../../assets/register/reg_logo.webp";
 
 export default function Header() {
   const name = useSelector(selectName);
@@ -12,12 +13,7 @@ export default function Header() {
   return (
     <header className={css.header}>
       <div className={css.headerLogo}>
-        <img
-          src="/src/assets/register/reg_logo.webp"
-          width={30.9}
-          height={30.9}
-          alt="Logo Image"
-        />
+        <img src={headerLogo} width={30.9} height={30.9} alt="Logo Image" />
         <p className={css.headerLogoName}>Spendy</p>
       </div>
 

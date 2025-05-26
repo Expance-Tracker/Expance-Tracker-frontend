@@ -8,42 +8,116 @@
   z-index: 999;
 }
 
+.closeButton {
+  position: absolute;
+  top: 12px;
+  left: 130px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #081222;
+}
+
 .modal {
-  background-color: #fff;
-  padding: 24px;
-  border-radius: 12px;
-  width: 300px;
-  text-align: center;
-}
-
-.title {
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 16px;
-}
-
-.text {
-  margin-bottom: 24px;
-  color: #333;
-}
-
-.buttons {
+  background-color: #508f8c;
+  width: 287px;
+  height: 352px;
+  padding: 32px 16px;
+  border-radius: 16px;
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  /* gap: 25px; */
+}
+
+.logo_modal {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.icon_modal {
+  width: 54px;
+  height: 54px;
+  background: url("/src/assets/register/reg_logo.png") no-repeat center/contain;
+}
+
+.title_modal {
+  font-weight: 700;
+  font-size: 30px;
+  text-align: center;
+  color: #081222;
+  padding-bottom: 25px;
+}
+
+.text_modal {
+  font-weight: 400;
+  font-size: 18px;
+  text-align: center;
+  color: #081222;
+  padding-bottom: 25px;
+}
+
+.modal_button {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   flex-direction: column;
   gap: 12px;
 }
 
-.confirm {
-  background-color: #c0392b;
-  color: white;
-  padding: 10px;
-  border: none;
+.delete {
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+  color: #fcfcfc;
+  background: #b20202;
   border-radius: 8px;
+  padding: 11px 79px;
+  width: 255px;
+  height: 44px;
+  /* padding-bottom: 12px; */
 }
 
 .cancel {
-  border: 1px solid #999;
-  padding: 10px;
+  border: 1px solid #081222;
   border-radius: 8px;
-  background-color: white;
+  padding: 11px 68px;
+  width: 255px;
+  height: 44px;
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+  color: #081222;
+  background: #508f8c;
+}
+
+@media (min-width: 768px) {
+  .closeButton {
+    position: absolute;
+    top: 12px;
+    left: 295px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #081222;
+  }
+
+  .modal {
+    width: 533px;
+    height: 387px;
+  }
+
+  .delete {
+    width: 410px;
+    height: 44px;
+  }
+
+  .cancel {
+    width: 410px;
+    height: 44px;
+  }
 }

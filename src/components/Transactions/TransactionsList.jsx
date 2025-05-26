@@ -26,11 +26,15 @@ const TransactionsList = () => {
     <>
       {/* Mobile View */}
       <div className={styles.mobileDiv}>
-        <ul className={styles.transactionList}>
-          {transactions.map((item) => (
-            <TransactionsItem key={item._id} transaction={item} />
-          ))}
-        </ul>
+        {transactions.length === 0 ? (
+          <p className={styles.noTransactions}>No transactions yet.</p>
+        ) : (
+          <ul className={styles.transactionList}>
+            {transactions.map((item) => (
+              <TransactionsItem key={item._id} transaction={item} />
+            ))}
+          </ul>
+        )}
       </div>
 
       {/* Tablet View */}
@@ -45,50 +49,56 @@ const TransactionsList = () => {
             <div className={styles.buttonsHeader}></div>
           </div>
 
-          {transactions.map((item) => (
-            <div
-              key={item._id}
-              className={`${styles.row} ${
-                item.type === "+" ? styles.incomeRow : styles.expenseRow
-              }`}
-            >
-              <div className={`${styles.cellItems} ${styles.dataItems}`}>
-                {new Date(item.date).toLocaleDateString("en-CA")}
-              </div>
-
-              <div className={`${styles.cellItems} ${styles.typeItems}`}>
-                <span className={styles.typeBox}>{item.type}</span>
-              </div>
-
-              <div className={`${styles.cellItems} ${styles.categoryItems}`}>
-                {item.category}
-              </div>
-
-              <div className={`${styles.cellItems} ${styles.commentItems}`}>
-                {item.comment || "-"}
-              </div>
-
+          {transactions.length === 0 ? (
+            <div className={styles.noTransactionsTablet}>
+              No transactions yet.
+            </div>
+          ) : (
+            transactions.map((item) => (
               <div
-                className={`${styles.cellItems} ${styles.sumItems} ${
-                  item.type === "+" ? styles.sumgreen : styles.sumyellow
+                key={item._id}
+                className={`${styles.row} ${
+                  item.type === "+" ? styles.incomeRow : styles.expenseRow
                 }`}
               >
-                {item.amount}
-              </div>
+                <div className={`${styles.cellItems} ${styles.dataItems}`}>
+                  {new Date(item.date).toLocaleDateString("en-CA")}
+                </div>
 
-              <div className={styles.buttons}>
-                <button className={styles.editButtonTablet}>
-                  <Pencil className={styles.icon} />
-                </button>
-                <button
-                  className={styles.deleteTablet}
-                  onClick={() => dispatch(openDeleteModal(item._id))}
+                <div className={`${styles.cellItems} ${styles.typeItems}`}>
+                  <span className={styles.typeBox}>{item.type}</span>
+                </div>
+
+                <div className={`${styles.cellItems} ${styles.categoryItems}`}>
+                  {item.category}
+                </div>
+
+                <div className={`${styles.cellItems} ${styles.commentItems}`}>
+                  {item.comment || "-"}
+                </div>
+
+                <div
+                  className={`${styles.cellItems} ${styles.sumItems} ${
+                    item.type === "+" ? styles.sumgreen : styles.sumyellow
+                  }`}
                 >
-                  Delete
-                </button>
+                  {item.amount}
+                </div>
+
+                <div className={styles.buttons}>
+                  <button className={styles.editButtonTablet}>
+                    <Pencil className={styles.icon} />
+                  </button>
+                  <button
+                    className={styles.deleteTablet}
+                    onClick={() => dispatch(openDeleteModal(item._id))}
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
     </>

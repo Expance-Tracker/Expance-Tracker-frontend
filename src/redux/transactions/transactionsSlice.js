@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getTransactions } from "./operations";
+import { deleteTransaction, getTransactions } from "./operations";
 
 const initialState = {
   items: [],
@@ -22,6 +22,14 @@ const transactionsSlice = createSlice({
       })
       .addCase(getTransactions.rejected, (state, action) => {
         state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(deleteTransaction.fulfilled, (state, action) => {
+        state.items = state.items.filter(
+          (transaction) => transaction._id !== action.payload
+        );
+      })
+      .addCase(deleteTransaction.rejected, (state, action) => {
         state.error = action.payload;
       });
   }

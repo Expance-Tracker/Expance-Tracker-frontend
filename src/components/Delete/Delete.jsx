@@ -1,30 +1,51 @@
-import { closeDeleteModal } from "../../redux/transactions/deleteModalSlice";
-import css from "./Delete.module.css";
 import { useDispatch, useSelector } from "react-redux";
+import { deleteTransaction } from "../../redux/transactions/operations";
+import { closeDeleteModal } from "../../redux/transactions/deleteModalSlice";
+import styles from "./Delete.module.css";
+import { X } from "lucide-react";
 
-export default function DeleteModal() {
+const DeleteModal = () => {
   const dispatch = useDispatch();
-  const isOpen = useSelector((state) => state.deleteModal.isDeleteModalOpen);
+  const { isDeleteModalOpen, transactionId } = useSelector(
+    (state) => state.deleteModal
+  );
 
-  if (!isOpen) return null;
+  if (!isDeleteModalOpen) return null;
+
+  const handleDelete = async () => {
+    await dispatch(deleteTransaction(transactionId));
+    dispatch(closeDeleteModal());
+  };
+
+  const handleCancel = () => {
+    dispatch(closeDeleteModal());
+  };
 
   return (
-    <div className={css.overlay} onClick={() => dispatch(closeDeleteModal())}>
-      <div className={css.modal} onClick={(e) => e.stopPropagation()}>
-        <h2 className={css.title}>Delete transaction</h2>
-        <p className={css.text}>
-          Are you sure you want to delete this transaction?
-        </p>
-        <div className={css.buttons}>
-          <button className={css.confirm}>Delete</button>
-          <button
-            className={css.cancel}
-            onClick={() => dispatch(closeDeleteModal())}
-          >
+    <div className={styles.overlay}>
+      <div className={styles.modal}>
+        <button className={styles.closeButton} onClick={handleCancel}>
+          <X size={24} />
+        </button>
+
+        <div className={styles.logo_modal}>
+          <div className={styles.icon_modal}></div>
+          <h2 className={styles.title_modal}>Spendy</h2>
+        </div>
+
+        <p className={styles.text_modal}>Are you sure you want to Delete?</p>
+
+        <div className={styles.modal_button}>
+          <button className={styles.delete} onClick={handleDelete}>
+            Delete
+          </button>
+          <button className={styles.cancel} onClick={handleCancel}>
             Cancel
           </button>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default DeleteModal;

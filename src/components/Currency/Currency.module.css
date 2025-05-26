@@ -1,3 +1,17 @@
+.hidden_mobile {
+  display: none;
+}
+@media (min-width: 768px) {
+  .hidden_mobile {
+    display: none;
+  }
+}
+@media (min-width: 1280px) {
+  .hidden_mobile {
+    display: block;
+  }
+}
+
 .external_currency_box {
   display: flex;
   flex-direction: column;

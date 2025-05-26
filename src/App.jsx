@@ -1,16 +1,18 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
-import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
+
+import { Route, Routes } from "react-router-dom";
+
+import CurrencyTab from "./pages/CurrencyTab/CurrencyTab";
+import Header from "./components/Header/Header";
+import HomeTab from "./pages/HomeTab/HomeTab";
+import Loader from "./components/Loader/Loader";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import LogoutModal from "./components/LogoutModal/LogoutModal";
-import Header from "./components/Header/Header";
-import RestrictedRoute from "./components/routes/RestrictedRoute";
-import HomeTab from "./pages/HomeTab/HomeTab";
-import StatisticsTab from "./pages/StatisticsTab/StatisticsTab";
-import Loader from "./components/Loader/Loader";
 import Navigation from "./components/NavLink/Navigation";
-import CurrencyTab from "./pages/CurrencyTab/CurrencyTab";
+import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
+import RestrictedRoute from "./components/routes/RestrictedRoute";
+import StatisticsTab from "./pages/StatisticsTab/StatisticsTab";
+import { useSelector } from "react-redux";
 
 function App() {
   const isLoading = useSelector(state => state.global?.isLoading ?? false);
@@ -32,7 +34,6 @@ function App() {
             <>
               <Header />
               <div className="page-content">
-                <Navigation />
                 <HomeTab />
               </div>
               <LogoutModal />

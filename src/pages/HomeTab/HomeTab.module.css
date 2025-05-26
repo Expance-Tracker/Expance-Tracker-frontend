@@ -1,17 +1,32 @@
 .container {
   margin-top: 32px;
+  /* display: none; */
+}
+.balance {
+  display: none;
+}
+@media (min-width: 768px) {
+  .container {
+    margin-right: 32px;
+  }
+  .balance {
+    display: block;
+  }
+  .box_without_transaction {
+    display: flex;
+  }
+  .box_navigation_balance {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }
 
 @media (min-width: 1280px) {
   .container {
-
     margin-right: 24px;
   }
-}
-
-@media (min-width: 768px) {
-
-  .container {
-    margin-right: 32px;
+  .balance {
+    display: none;
   }
 }

@@ -1,7 +1,10 @@
+/* в дизі цей колір йде на всі сторінки, тому задала глобально
+не змінюйте! */ 
 body {
   font-family: "Arial", "Helvetica", "Inter Tight", sans-serif;
   box-sizing: border-box;
   min-width: 320px;
+  background: linear-gradient(135deg, #294045 0%, #1e2f33 100%);
 }
 
 h1,
@@ -28,12 +31,7 @@ img {
   max-width: 100%;
 }
 
-/* в дизі цей колір йде на всі сторінки, тому задала глобально
-не змінюйте! */
 
-body {
-  background: linear-gradient(135deg, #294045 0%, #1e2f33 100%);
-}
 
 /* скидаю стилі для h2  */
 h2 {
@@ -55,7 +53,6 @@ form {
 
 svg {
   vertical-align: middle;
-  shape-rendering: crispEdges;
 }
 
 @media (max-width: 768px) {

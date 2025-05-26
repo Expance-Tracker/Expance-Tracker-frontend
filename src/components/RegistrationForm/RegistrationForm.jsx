@@ -7,7 +7,7 @@ import PasswordStrengthBar from "react-password-strength-bar";
 import axiosInstance from "../../api/axiosConfig";
 import css from "./RegistrationForm.module.css";
 import { useState } from "react";
-import walletWave from '../../assets/register/wallet_wave.png';
+import walletWave from '../../assets/register/wallet_wave.webp';
 
 const RegistrationSchema = Yup.object().shape({
   name: Yup.string()

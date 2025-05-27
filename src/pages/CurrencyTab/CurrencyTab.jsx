@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setLoading } from "../../redux/global/globalSlice";
+import Currency from '../../components/Currency/Currency';
+import Navigation from '../../components/NavLink/Navigation';
+import styles from './CurrencyTab.module.css'
 
 const CurrencyTab = () => {
   const dispatch = useDispatch();
@@ -11,10 +14,13 @@ const CurrencyTab = () => {
     return () => clearTimeout(timer);
   }, [dispatch]);  
 
-return (
-  <>
-    
-    </>
+  return (
+    <div >
+      <Navigation />
+      <div className={styles.currency_mobile_two}>
+        <Currency />
+     </div>
+    </div>
 )
 };
 

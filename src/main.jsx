@@ -4,7 +4,9 @@ import { persistor, store } from "./redux/store.js";
 
 import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
+
 import Icons from "./components/Icons/Icons.jsx";
+
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
 import { StrictMode } from "react";

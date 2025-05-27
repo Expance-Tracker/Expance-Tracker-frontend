@@ -1,0 +1,14 @@
+.chart-container {
+    background-color: #273845;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.no-data {
+    text-align: center;
+    color: #ccc; }

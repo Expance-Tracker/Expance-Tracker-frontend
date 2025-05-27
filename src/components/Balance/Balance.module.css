@@ -7,7 +7,6 @@
   text-align: center;
   width: 100%;
   min-width: 288px;
-  min-height: 115px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -26,12 +25,11 @@
 }
 
 /* === Планшети (768px до 1023px) === */
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) {
   .balance-card {
-    padding: 24px;
+    padding: 9px 24px 0;
     border-radius: 16px;
     min-width: 338px;
-    min-height: 143px;
   }
 
   .balance-label {
@@ -48,17 +46,15 @@
 }
 
 /* === ПК (від 1024px) === */
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .balance-card {
     background: transparent;
     box-shadow: none;
-    padding: 0;
     text-align: left;
   }
 
   .balance-label {
     font-size: 14px;
-    color: #6e6e6e;
   }
 
   .balance-amount {
@@ -70,3 +66,27 @@
     margin-top: 12px;
   }
 }
+
+
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+  .balance-card{
+    height: 143px;
+    width: 338px;
+    text-align: start;
+    padding: 38px
+  }
+  .balance-label{
+    margin-bottom:18px;
+  }
+}
+
+@media screen and (max-width: 768px){
+.balance-card{
+  text-align: start;
+}
+.balance-label{
+  opacity: 40%;
+  margin-bottom: 18px;
+}
+}
+  

@@ -1,7 +1,9 @@
+/* Ваші існуючі стилі залишаються без змін */
 body {
   font-family: "Arial", "Helvetica", "Inter Tight", sans-serif;
   box-sizing: border-box;
   min-width: 320px;
+  background: linear-gradient(135deg, #294045 0%, #1e2f33 100%);
 }
 
 h1,
@@ -17,6 +19,7 @@ p {
 h1 {
   margin-bottom: 30px;
 }
+
 ul,
 ol {
   margin: 0;
@@ -28,41 +31,42 @@ img {
   max-width: 100%;
 }
 
-/* в дизі цей колір йде на всі сторінки, тому задала глобально
-не змінюйте! */
-
-body {
-  background: linear-gradient(135deg, #294045 0%, #1e2f33 100%);
-}
-
-/* скидаю стилі для h2  */
 h2 {
   margin-top: 0;
 }
 
-/* резет для форми, не чіпайте */
 form {
   margin: 0;
   padding: 0;
   width: 100%;
 }
 
+/* Оновлений page-content */
 .page-content {
-  display: flex;
+  
   flex: 1;
-  justify-content: space-around;
+  width: 100%;
+  margin: 0 auto 24px;
+  padding: 0 16px;
 }
 
 svg {
   vertical-align: middle;
-  shape-rendering: crispEdges;
 }
 
-@media (max-width: 768px) {
+/* Планшет */
+@media (min-width: 768px) {
   .page-content {
-      display:block;
-      flex: 1;
-      justify-content: space-around;
-    }
+    padding: 0 32px;
+    display: flex;
+    margin: 32px auto 32px;
+  }
 }
 
+/* Дескотоп */
+@media (min-width: 1280px) {
+  .page-content {
+    justify-content: flex-start;
+    gap: 32px;
+  }
+} 

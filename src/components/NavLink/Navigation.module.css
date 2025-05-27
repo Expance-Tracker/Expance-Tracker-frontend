@@ -1,132 +1,171 @@
 .navigationContainer {
-     width: 451px; height: 92px;
-    margin: 32px 24px 24px 24px;
-    background: linear-gradient(180deg, #355359 0%, #3B5D63 100%);
-    border-radius: 16px;
-    padding: 16px 32px;
-    display: flex;
-    align-items: center;
+  width: 451px;
+  height: 92px;
+  margin: 32px 24px 24px 24px;
+  background: linear-gradient(180deg, #355359 0%, #3b5d63 100%);
+  border-radius: 16px;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
 }
 
+
 .navList {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
 }
 
 .navLink {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 100%;
-    color: rgba(255, 255, 255, 0.6);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    transition: all 0.3s ease;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
 }
 
 .navLink span {
-    line-height: 1;
-    vertical-align: middle;
+  line-height: 1;
+  vertical-align: middle;
 }
 
 .navLinkActive {
-    font-weight: 700;
-    color: rgba(252, 252, 252, 1);
-    opacity: 1;
+  font-weight: 700;
+  color: rgba(252, 252, 252, 1);
+  opacity: 1;
 }
 
 .navLink svg {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    opacity: 0.6;
-    flex-shrink: 0;
-    color: rgba(252, 252, 252, 1);
-    background-color: rgba(41, 64, 69, 1);
-    border-radius: 6px;
-    padding: 3px;
-}
-.navIcon {
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+
+
+  margin: 0;
+  opacity: 0.6;
+  flex-shrink: 0;
+  color: rgba(252, 252, 252, 1);
+  background-color: rgba(41, 64, 69, 1);
+  border-radius: 6px;
 }
 
-.navLinkActive svg {
-    opacity: 1;
-   background-color: rgba(255, 255, 255, 1);
-    color: #294045;
+.navLinkActive svg{
+  color: #294045;
+  background-color: rgba(252, 252, 252, 1);
+  opacity: 1
+}
+
+
+
+
+
+.navIcon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+
+.icon_svg {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 1);
+  color: #294045;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
 /* Приховуємо CurrencyTab на десктопі */
 @media screen and (min-width: 768px) {
-    .currencyTab {
-        display: none;
-    }
+  .currencyTab {
+    display: none;
+  }
+
+  .navigationContainer {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    height: auto;
+    padding-top: 35px;
+    padding-bottom: 35px;
+  }
+
 }
 
 /* Мобільна версія */
 @media screen and (max-width: 768px) {
-    .navigationContainer {
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        border-radius: 16px 16px 0 0;
-        padding: 8px 16px;
-        margin: 0;
-        background: none;
-    }
+  .navigationContainer {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    border-radius: 16px 16px 0 0;
+    padding: 8px 16px;
+    margin: 0;
+    background: none;
+  }
 
-    .navList {
-        flex-direction: row;
-        justify-content: space-around;
-        gap: 0;
-    }
+  .navList {
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 0;
+  }
 
-    .navList span {
-        display: none;
-    }
+  .navList span {
+    display: none;
+  }
 
-    .navLink {
-        padding: 0;
-        justify-content: center;
-    }
+  .navLink {
+    padding: 0;
+    justify-content: center;
+  }
 
-    .navLink svg {
-        min-width: 32px;
-        min-height: 32px;
-        margin: 0;
-        padding: 8px;
-        opacity: 0.6;
-        color: rgba(252, 252, 252, 1);
-        background: rgba(41, 64, 69, 1);
-        border-radius: 6px;
-    }
+  .navLink svg {
+    min-width: 32px;
+    min-height: 32px;
+    margin: 0;
+    opacity: 0.6;
+    color: rgba(252, 252, 252, 1);
+    background: rgba(41, 64, 69, 1);
+    border-radius: 6px;
 
-    .navLinkActive svg {
-        background: rgba(252, 252, 252, 1);
-        color: rgba(41, 64, 69, 1);
-        opacity: 1;
-    }
+  }
 
-    .currencyTab {
-        display: block !important;
-    }
+  .navLinkActive svg {
+    background: rgba(41, 64, 69, 1);
+    color:rgba(59, 93, 99, 1);
+    opacity: 1;
+  }
 
-        .navIcon {
-            width: 32px;
-            height: 32px;
-        }
-    
-        .navLink svg {
-            padding: 8px;
-        }
+  .currencyTab {
+    display: block !important;
+  }
+
+  .navIcon {
+    width: 32px;
+    height: 32px;
+  }
+
 }
+
+
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+ .navigationContainer {
+      height: 143px;
+      width: 338px;
+ }
+
+
+}
+

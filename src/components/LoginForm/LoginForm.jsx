@@ -43,7 +43,7 @@ export default function LoginForm() {
       })
       .catch((err) => {
         console.log(err);
-        toast.error("Invalid data");
+        toast.error(err);
       });
   };
 

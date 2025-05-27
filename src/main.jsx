@@ -1,12 +1,17 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
 import "modern-normalize";
-import { BrowserRouter } from "react-router-dom";
-import { Toaster } from "react-hot-toast";
-import { Provider } from "react-redux";
-import App from "./App.jsx";
+
 import { persistor, store } from "./redux/store.js";
+
+import App from "./App.jsx";
+import { BrowserRouter } from "react-router-dom";
+
+import Icons from "./components/Icons/Icons.jsx";
+
 import { PersistGate } from "redux-persist/integration/react";
+import { Provider } from "react-redux";
+import { StrictMode } from "react";
+import { Toaster } from "react-hot-toast";
+import { createRoot } from "react-dom/client";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -14,6 +19,7 @@ createRoot(document.getElementById("root")).render(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <App />
+          <Icons />
         </PersistGate>
       </Provider>
     </BrowserRouter>

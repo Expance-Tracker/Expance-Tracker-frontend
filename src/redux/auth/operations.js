@@ -14,7 +14,7 @@ export const login = createAsyncThunk("auth/login", async (body, thunkAPI) => {
     setTokenForRequest(data.data.accessToken);
     return data.data;
   } catch (err) {
-    return thunkAPI.rejectWithValue(err.message);
+    return thunkAPI.rejectWithValue(err.response.data.message);
   }
 });
 // logout

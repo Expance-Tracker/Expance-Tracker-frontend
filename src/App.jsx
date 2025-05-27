@@ -13,10 +13,15 @@ import LogoutModal from "./components/LogoutModal/LogoutModal";
 import Delete from "./components/Delete/Delete";
 
 import Navigation from "./components/NavLink/Navigation";
+
 import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
 import RestrictedRoute from "./components/routes/RestrictedRoute";
 import StatisticsTab from "./pages/StatisticsTab/StatisticsTab";
 import { useSelector } from "react-redux";
+
+import CurrencyTab from "./pages/CurrencyTab/CurrencyTab";
+import PrivateRoute from "./components/routes/PrivateRoute";
+
 
 function App() {
   const isLoading = useSelector((state) => state.global?.isLoading ?? false);
@@ -25,7 +30,12 @@ function App() {
     <div className="app-container">
       <Routes>
         {/* Public Routes */}
-        <Route path="/register" element={<RegistrationForm />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute redirectTo="/" component={<RegistrationForm />} />
+          }
+        />
         <Route
           path="/login"
           element={<RestrictedRoute redirectTo="/" component={<LoginPage />} />}
@@ -35,20 +45,20 @@ function App() {
         <Route
           path="/"
           element={
-            <>
+            <PrivateRoute>
               <Header />
               <div className="page-content">
                 <HomeTab />
               </div>
               <LogoutModal />
               <Delete />
-            </>
+            </PrivateRoute>
           }
         />
         <Route
           path="/statistics"
           element={
-            <>
+            <PrivateRoute>
               <Header />
               <div className="page-content">
                 <Navigation />
@@ -56,13 +66,13 @@ function App() {
               </div>
               <LogoutModal />
               <Delete />
-            </>
+            </PrivateRoute>
           }
         />
         <Route
           path="/currency"
           element={
-            <>
+            <PrivateRoute>
               <Header />
               <div className="page-content">
                 
@@ -70,7 +80,7 @@ function App() {
               </div>
               <LogoutModal />
               <Delete />
-            </>
+            </PrivateRoute>
           }
         />
       </Routes>

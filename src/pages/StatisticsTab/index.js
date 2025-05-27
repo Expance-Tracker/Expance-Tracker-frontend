@@ -1,1 +1,1 @@
-export { default as StatisticsTab } from './StatisticsTab.jsx'
+export { default  } from './StatisticsTab.jsx'

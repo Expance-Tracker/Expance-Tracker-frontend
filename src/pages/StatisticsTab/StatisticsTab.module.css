@@ -22,6 +22,8 @@
          flex-direction: row;
          width: 698px;
          padding-top: 18x;
+         margin-top:35px;
+         margin-bottom:24px;
       }
    
       .chartSide {

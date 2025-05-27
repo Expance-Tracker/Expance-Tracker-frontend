@@ -2,29 +2,26 @@ import React from "react";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import styles from "./Chart.module.css";
 
-// Можеш кольори взяти з Figma макету:
 const COLORS = [
   "#FFD600", "#FFB800", "#FFA000", "#FF6F00", "#FF3D00",
   "#E53935", "#8E24AA", "#3949AB", "#00897B", "#43A047", "#FDD835"
 ];
 
-// Поки що використаємо мокові дані
-const mockData = [
-  { category: "Food", amount: 1200 },
-  { category: "Transport", amount: 600 },
-  { category: "Fun", amount: 300 },
-];
+const Chart = ({ type, data = [] }) => {
+  const filtered = data.find(item => item.type === type);
+  const categories = filtered?.categories || [];
 
-const Chart = ({ type, data = mockData }) => {
-  // data — приходить із redux або через props, зараз тестовий варіант
+  if (!categories.length) {
+    return <div className={styles.chartWrapper}>No data</div>;
+  }
 
   return (
     <div className={styles.chartWrapper}>
       <ResponsiveContainer width="100%" height={260}>
         <PieChart>
           <Pie
-            data={data}
-            dataKey="amount"
+            data={categories}
+            dataKey="total"
             nameKey="category"
             cx="50%"
             cy="50%"
@@ -34,7 +31,7 @@ const Chart = ({ type, data = mockData }) => {
             labelLine={false}
             label={false}
           >
-            {data.map((entry, i) => (
+            {categories.map((entry, i) => (
               <Cell key={i} fill={COLORS[i % COLORS.length]} />
             ))}
           </Pie>

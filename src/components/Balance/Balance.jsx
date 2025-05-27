@@ -22,7 +22,7 @@ const Balance = ({ className = "" }) => {
     <div className={`${styles["balance-card"]} ${className}`}>
       <p className={styles["balance-label"]}>YOUR BALANCE</p>
 
-      {loading && <p className={styles["balance-loading"]}>Loading...</p>}
+      {loading && <p className={styles["balance-loading"]}></p>}
       {error && <p className={styles["balance-error"]}>Error: {error}</p>}
       {!loading && !error && (
         <h2 className={styles["balance-amount"]}>

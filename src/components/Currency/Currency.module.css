@@ -104,6 +104,14 @@
       clip: rect(0 0 0 0);
       overflow: hidden;
     }
+     .external_currency_box{
+      height: 390px;
+     }
+     .img_wallet{
+      width: 234px;
+      height: 174px;
+      margin-top: 32px;
+     }
 }
 
 
@@ -120,6 +128,4 @@
     width: 222px;
     height: 166px;
   }
-
-  
 }

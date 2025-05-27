@@ -115,4 +115,15 @@
     flex-direction: row;
     display: flex;
 }
+
+  .box_navigation_balance{
+    margin-right: 32px;
+}
+.container {
+  align-items: center;
+}
+
+.box_navigation_balance{
+  gap: 0;
+}
 }

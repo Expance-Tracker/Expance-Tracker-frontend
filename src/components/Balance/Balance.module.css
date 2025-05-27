@@ -66,3 +66,27 @@
     margin-top: 12px;
   }
 }
+
+
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+  .balance-card{
+    height: 143px;
+    width: 338px;
+    text-align: start;
+    padding: 38px
+  }
+  .balance-label{
+    margin-bottom:18px;
+  }
+}
+
+@media screen and (max-width: 768px){
+.balance-card{
+  text-align: start;
+}
+.balance-label{
+  opacity: 40%;
+  margin-bottom: 18px;
+}
+}
+  

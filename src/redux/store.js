@@ -7,6 +7,7 @@ import categoriesReducer from "./slices/categoriesSlice";
 import globalReducer from "./global/globalSlice";
 import deleteModalReducer from "./transactions/deleteModalSlice";
 import statisticsReducer from "./statistics/statisticsSlice";
+import deviceReducer from './slices/deviceSlice';
 
 import {
   persistStore,
@@ -38,6 +39,7 @@ export const store = configureStore({
     categories: categoriesReducer,
     deleteModal: deleteModalReducer,
     statistics: statisticsReducer,   
+    device: deviceReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

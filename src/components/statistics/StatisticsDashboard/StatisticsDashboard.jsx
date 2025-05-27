@@ -18,7 +18,7 @@ const StatisticsDashboard = ({ month, year, onMonthChange, onYearChange }) => (
         className={styles.select}
       >
         {months.map((m, idx) => (
-          <option value={idx} key={m}>{m}</option>
+          <option value={idx+1} key={m}>{m}</option>
         ))}
       </select>
       <select

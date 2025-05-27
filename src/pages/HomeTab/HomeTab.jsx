@@ -1,10 +1,13 @@
-import TransactionsList from "../../components/Transactions/TransactionsList";
-import styles from "./HomeTab.module.css";
-import { setLoading } from "../../redux/global/globalSlice";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { fetchCategories } from "../../redux/slices/categoriesSlice";
+import Balance from "../../components/Balance/Balance";
 import ButtonAddTransaction from "../../components/ButtonAddTransaction/ButtonAddTransaction";
+import Currency from "../../components/Currency/Currency";
+import Navigation from "../../components/NavLink/Navigation";
+import TransactionsList from "../../components/Transactions/TransactionsList";
+import { fetchCategories } from "../../redux/slices/categoriesSlice";
+import { setLoading } from "../../redux/global/globalSlice";
+import styles from "./HomeTab.module.css";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 const HomeTab = () => {
   const dispatch = useDispatch();
@@ -19,7 +22,23 @@ const HomeTab = () => {
 
   return (
     <div className={styles.container}>
-      <TransactionsList />
+      <div className={styles.box_without_transaction}>
+      <div
+      className={styles.without_transaction_list}>
+        <div className={styles.box_navigation_balance}>
+          <Navigation />
+          <div className={styles.balance_deskopt}>
+            <Balance />
+          </div>
+        </div>
+            <div className={styles.currency_mobile}>
+          <Currency />
+        </div>
+        </div>
+      </div>
+      <div className={styles.transactionsList_only_tablet}>
+        <TransactionsList />
+      </div>
       <ButtonAddTransaction />
     </div>
   );

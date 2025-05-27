@@ -1,6 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import css from "./LoginForm.module.css";
-
+import { useState } from 'react';
 import walletIcon from "../../assets/walletIcon.svg";
 import loginImg from "../../assets/loginImg.svg";
 import { BiSolidEnvelope } from "react-icons/bi";
@@ -9,11 +9,12 @@ import { MdLock } from "react-icons/md";
 import { NavLink, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-
+import  Loader  from "../Loader/Loader";
 import { login } from "../../redux/auth/operations";
 import toast from "react-hot-toast";
 
 export default function LoginForm() {
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -34,6 +35,7 @@ export default function LoginForm() {
   });
 
   const handleSubmit = (values, options) => {
+    setIsLoading(true);
     dispatch(login(values))
       .unwrap()
       .then((res) => {
@@ -43,12 +45,16 @@ export default function LoginForm() {
       })
       .catch((err) => {
         console.log(err);
-        toast.error("Invalid data");
+        toast.error(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
   return (
     <div className={css.login__container}>
+      {isLoading && <Loader />}
       <div className={css.wrapper}>
         <div className={css.logo}>
           <img

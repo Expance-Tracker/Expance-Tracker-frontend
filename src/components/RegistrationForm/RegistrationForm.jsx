@@ -8,6 +8,7 @@ import axiosInstance from "../../api/axiosConfig";
 import css from "./RegistrationForm.module.css";
 import { useState } from "react";
 import walletWave from '../../assets/register/wallet_wave.webp';
+import Loader from '../../components/Loader/Loader';
 
 const RegistrationSchema = Yup.object().shape({
   name: Yup.string()
@@ -28,6 +29,7 @@ const RegistrationSchema = Yup.object().shape({
 });
 
 export default function RegistrationForm() {
+  const [isLoading, setIsLoading] = useState(false);
   const [backendError, setBackendError] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [password, setPassword] = useState("");
@@ -35,6 +37,7 @@ export default function RegistrationForm() {
 
   return (
     <div className={css["register-container"]}>
+      {isLoading && <Loader />}
       <div className={css["register-card"]}>
         <div className={css["register-logo"]} />
         <h2 className={css["register-title"]}>Spendy</h2>
@@ -48,6 +51,7 @@ export default function RegistrationForm() {
           validationSchema={RegistrationSchema}
           onSubmit={async (values, { setSubmitting }) => {
             setBackendError("");
+            setIsLoading(true);
             try {
               const res = await axiosInstance.post("/register", {
                 name: values.name,
@@ -60,8 +64,10 @@ export default function RegistrationForm() {
               setBackendError(
                 error.response?.data?.message || "Registration error - backend"
               );
+            } finally {
+              setIsLoading(false);
+              setSubmitting(false);
             }
-            setSubmitting(false);
           }}
         >
           {({ isSubmitting, setFieldValue }) => (

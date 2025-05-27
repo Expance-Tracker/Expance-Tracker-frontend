@@ -2,17 +2,35 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const GET_BALANCE_API_URL = 'https://expance-tracker-backend-9zu7.onrender.com/user/balance';    
+const GET_BALANCE_API_URL = 'https://expance-tracker-backend-9zu7.onrender.com/user/balance';
 
 export const fetchBalance = createAsyncThunk(
   'balance/fetchBalance',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get(GET_BALANCE_API_URL);
-      const userBalance = response.data.balance || 0; // або інше поле, якщо реальний бек
+      
+      const state = thunkAPI.getState();
+      const token = state.auth.token;
+
+      if (!token) {
+        return thunkAPI.rejectWithValue('Error fetching balance token');
+      }
+
+      
+      const response = await axios.get(GET_BALANCE_API_URL, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      
+      const userBalance = response.data.balance ?? 0;
+
       return userBalance;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message || 'Error fetching balance');
+      return thunkAPI.rejectWithValue(
+        error.response?.data?.message || error.message || 'Error fetching balance'
+      );
     }
   }
 );

@@ -23,16 +23,24 @@ const HomeTab = () => {
   return (
     <div className={styles.container}>
       <div className={styles.box_without_transaction}>
+      <div
+      className={styles.without_transaction_list}>
         <div className={styles.box_navigation_balance}>
           <Navigation />
-          <Balance className={styles.balance} />
+          <div className={styles.balance_deskopt}>
+            <Balance />
+          </div>
         </div>
-        <Currency />
+            <div className={styles.currency_mobile}>
+          <Currency />
+        </div>
+        </div>
       </div>
-      <TransactionsList />
+      <div className={styles.transactionsList_only_tablet}>
+        <TransactionsList />
+      </div>
       <ButtonAddTransaction />
     </div>
-    // dobry den
   );
 };
 

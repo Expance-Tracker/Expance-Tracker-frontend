@@ -1,41 +1,28 @@
-.hidden_mobile {
-  display: none;
-}
-@media (min-width: 768px) {
-  .hidden_mobile {
-    display: none;
-  }
-}
-@media (min-width: 1280px) {
-  .hidden_mobile {
-    display: block;
-  }
-}
-
 .external_currency_box {
   display: flex;
   flex-direction: column;
   background: linear-gradient(180deg, #355359 0%, #3b5d63 100%);
   border-radius: 16px;
   padding: 16px;
+  width: 100%;
 }
-/* .currency_box {
-} */
+
 .list_title {
   display: flex;
-  /* gap: 37px; */
   justify-content: space-between;
   align-items: center;
   border-radius: 12px;
   padding: 16px 12px;
   background: linear-gradient(180deg, #294045 0%, #1e2f33 100%);
 }
+
 .title {
   font-family: "Inter Tight";
   font-weight: 600;
   font-size: 14px;
   color: #fff;
 }
+
 .list_rates {
   display: flex;
   justify-content: space-between;
@@ -44,10 +31,12 @@
   padding-left: 29px;
   padding-top: 16px;
 }
+
 .list_rates:last-child {
   padding-top: 32px;
-  margin-bottom: 32px;
+  margin-bottom: 10px;
 }
+
 .rate {
   font-family: "Inter Tight";
   font-weight: 400;
@@ -61,24 +50,76 @@
   height: 135px;
   margin: 0 auto;
 }
+
 @media (min-width: 768px) {
+  .external_currency_box {
+    width: 336px;
+    flex-shrink: 0;
+  }
+
   .list_title {
     padding: 16px 32px;
   }
+
   .title {
     font-size: 16px;
   }
+
   .list_rates {
     padding-right: 25px;
     padding-left: 44px;
   }
+
   .rate {
     font-size: 16px;
   }
+ 
 }
+
+@media screen and (min-width:768px) and (max-width:1280px) {
+  .only_deskopt {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      border: 0;
+      padding: 0;
+      white-space: nowrap;
+      clip-path: inset(100%);
+      clip: rect(0 0 0 0);
+      overflow: hidden;
+    }
+}
+
+@media screen and (max-width: 768px) {
+  .only_deskopt {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      border: 0;
+      padding: 0;
+      white-space: nowrap;
+      clip-path: inset(100%);
+      clip: rect(0 0 0 0);
+      overflow: hidden;
+    }
+}
+
+
 @media (min-width: 1280px) {
+  .external_currency_box {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
   .img_wallet {
     width: 222px;
     height: 166px;
   }
+
+  
 }

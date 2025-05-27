@@ -56,7 +56,9 @@ const Currency = () => {
   return (
     <div className={styles.external_currency_box}>
       <div className={styles.currency_box}>
-        <Balance className={styles.hidden_mobile} />
+        <div className={styles.only_deskopt}>
+          <Balance className={styles.hidden_mobile} />
+          </div>
         <div className={styles.list_title}>
           <div className={styles.title}>Currency</div>
           <div className={styles.title}>Purchase</div>

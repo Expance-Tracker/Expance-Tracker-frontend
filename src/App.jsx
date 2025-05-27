@@ -65,7 +65,7 @@ function App() {
             <>
               <Header />
               <div className="page-content">
-                <Navigation />
+                
                 <CurrencyTab />
               </div>
               <LogoutModal />

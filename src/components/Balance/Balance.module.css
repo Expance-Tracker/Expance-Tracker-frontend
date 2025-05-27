@@ -7,7 +7,6 @@
   text-align: center;
   width: 100%;
   min-width: 288px;
-  min-height: 115px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -28,10 +27,9 @@
 /* === Планшети (768px до 1023px) === */
 @media (min-width: 768px) {
   .balance-card {
-    padding: 24px;
+    padding: 9px 24px 0;
     border-radius: 16px;
     min-width: 338px;
-    min-height: 143px;
   }
 
   .balance-label {
@@ -52,13 +50,11 @@
   .balance-card {
     background: transparent;
     box-shadow: none;
-    padding: 0;
     text-align: left;
   }
 
   .balance-label {
     font-size: 14px;
-    color: #6e6e6e;
   }
 
   .balance-amount {

@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  fetchStatistics,
   setType,
   setMonth,
   setYear,
 } from "../../redux/statistics/statisticsSlice";
+import { fetchStatistics } from "../../redux/statistics/operations";
 import StatisticsDashboard from "../../components/statistics/StatisticsDashboard/StatisticsDashboard";
 import Toggle from "../../components/statistics/Toggle/Toggle";
 import Chart from "../../components/statistics/Chart/Chart";

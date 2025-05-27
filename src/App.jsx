@@ -54,7 +54,6 @@ function App() {
             <PrivateRoute>
               <Header />
               <div className="page-content">
-                <Navigation />
                 <StatisticsTab />
               </div>
               <LogoutModal />

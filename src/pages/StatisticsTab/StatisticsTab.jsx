@@ -4,7 +4,7 @@ import {
   setType,
   setMonth,
   setYear,
-} from "../../redux/Statistics/statisticsSlice";
+} from "../../redux/statistics/statisticsSlice";
 import { fetchStatistics } from "../../redux/statistics/operations";
 import StatisticsDashboard from "../../components/statistics/StatisticsDashboard/StatisticsDashboard";
 import Toggle from "../../components/statistics/Toggle/Toggle";

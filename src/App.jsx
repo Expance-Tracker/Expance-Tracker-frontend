@@ -39,10 +39,12 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
+              <div className="all-page  ">
               <Header />
               <div className="page-content">
                 <HomeTab />
-              </div>
+                </div>
+                </div>
               <LogoutModal />
               <Delete />
             </PrivateRoute>

@@ -14,12 +14,9 @@
     
 }
 .statisticsContainer {
+   min-height: 582px;
    min-width:  288px;
     /* фіксована ширина для мобілки */
-    margin-left: 16px;
-    /* зовнішній відступ ліворуч */
-    margin-right: 16px;
-    /* зовнішній відступ праворуч */
     padding-left: 12px;
     /* внутрішній відступ ліворуч */
     padding-right: 12px;
@@ -37,8 +34,8 @@
          flex-direction: row;
          width: 698px;
          padding-top: 18x;
-         margin-top:35px;
          margin-bottom:24px;
+         min-height: 582px;
       }
    
       .chartSide {
@@ -53,7 +50,6 @@
          max-width: 328px;
          display: flex;
          flex-direction: column;
-         align-items: center;
          gap: 24px;
       }
    
@@ -66,3 +62,128 @@
 
          
             
+/* Мобільні стилі за замовчуванням */
+.container {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   width: 100%;
+}
+
+.balance {
+   display: none;
+}
+
+.box_without_transaction {
+   display: flex;
+   flex-direction: column;
+}
+
+.box_navigation_balance {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+}
+
+/* Планшет 768px+ */
+@media screen and (min-width: 768px) {
+   .container {
+      display: flex;
+
+      gap: 24px;
+      width: 100%;
+      align-items: flex-start;
+   }
+
+   .box_without_transaction {
+      display: flex;
+      flex-direction: column;
+      min-width: 280px;
+      flex-shrink: 0;
+   }
+
+   .box_navigation_balance {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+   }
+
+   .balance {
+      display: block;
+   }
+}
+
+/* Дескотоп 1280px+ */
+@media screen and (min-width: 1280px) {
+   .container {
+      display: flex;
+      flex-direction: row;
+      gap: 24px;
+      width: 100%;
+      align-items: flex-start;
+   }
+
+   .balance {
+      display: block;
+   }
+
+   .box_without_transaction {
+      display: flex;
+      flex-direction: column;
+      width: 448px;
+      height: 469px;
+      flex-shrink: 0;
+   }
+
+   .box_navigation_balance {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 32px;
+      flex: 1;
+   }
+}
+
+@media screen and (min-width:1280px) {
+   .balance_deskopt {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      border: 0;
+      padding: 0;
+      white-space: nowrap;
+      clip-path: inset(100%);
+      clip: rect(0 0 0 0);
+      overflow: hidden;
+   }
+}
+
+@media screen and (max-width:768px) {
+   .currency_mobile {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      border: 0;
+      padding: 0;
+      white-space: nowrap;
+      clip-path: inset(100%);
+      clip: rect(0 0 0 0);
+      overflow: hidden;
+   }
+}
+
+
+@media screen and (min-width:768px) and (max-width:1280px) {
+   .without_chart_content {
+      flex-direction: row;
+      display: flex;
+   }
+
+   .box_navigation_balance {
+      margin-right: 32px;
+   }
+   .box_navigation_balance {
+      gap: 0;
+   }}

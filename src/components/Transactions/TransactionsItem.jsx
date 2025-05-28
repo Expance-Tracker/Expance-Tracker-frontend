@@ -2,8 +2,11 @@ import { useDispatch } from "react-redux";
 import css from "./Transactions.module.css";
 import { Pencil } from "lucide-react";
 import { openDeleteModal } from "../../redux/transactions/deleteModalSlice";
+import { useState } from "react";
+import ModalEditTransaction from "../ModalEditTransaction/ModalEditTransaction";
 
 const TransactionsItem = ({ transaction }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const dispatch = useDispatch();
   const { _id, date, type, category, comment, sum } = transaction;
 
@@ -48,13 +51,27 @@ const TransactionsItem = ({ transaction }) => {
         >
           Delete
         </button>
-        <button className={css.editButton}>
+        <button
+          className={css.editButton}
+          onClick={() => {
+            setModalIsOpen(true);
+          }}
+        >
           <span className={css.editStaff}>
             <Pencil className={css.icon} />
           </span>
-          <span className={css.edit}>Edit</span>
         </button>
+
+        <span className={css.edit}>Edit</span>
       </div>
+      {modalIsOpen && (
+        <ModalEditTransaction
+          onClose={() => {
+            setModalIsOpen(false);
+          }}
+          transaction={transaction}
+        />
+      )}
     </div>
   );
 };

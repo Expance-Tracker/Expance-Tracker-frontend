@@ -1,5 +1,4 @@
 import Balance from "../../components/Balance/Balance";
-import ButtonAddTransaction from "../../components/ButtonAddTransaction/ButtonAddTransaction";
 import Currency from "../../components/Currency/Currency";
 import Navigation from "../../components/NavLink/Navigation";
 import TransactionsList from "../../components/Transactions/TransactionsList";
@@ -23,23 +22,21 @@ const HomeTab = () => {
   return (
     <div className={styles.container}>
       <div className={styles.box_without_transaction}>
-      <div
-      className={styles.without_transaction_list}>
-        <div className={styles.box_navigation_balance}>
-          <Navigation />
-          <div className={styles.balance_deskopt}>
-            <Balance />
+        <div className={styles.without_transaction_list}>
+          <div className={styles.box_navigation_balance}>
+            <Navigation />
+            <div className={styles.balance_deskopt}>
+              <Balance />
+            </div>
           </div>
-        </div>
-            <div className={styles.currency_mobile}>
-          <Currency />
-        </div>
+          <div className={styles.currency_mobile}>
+            <Currency />
+          </div>
         </div>
       </div>
       <div className={styles.transactionsList_only_tablet}>
         <TransactionsList />
       </div>
-      <ButtonAddTransaction />
     </div>
   );
 };

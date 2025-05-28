@@ -29,9 +29,10 @@
   .addBtn {
     width: 64px;
     height: 64px;
-    bottom: 48px;
-    right: 48px;
+    bottom: 16px;
+    right: 16px;
     position: absolute;
+    margin-right: 0;
   }
 
   .plusIcon {
@@ -44,6 +45,8 @@
   .addBtn {
     width: 56px;
     height: 56px;
+    bottom: 24px;
+    right: 24px;
   }
 
   .plusIcon {

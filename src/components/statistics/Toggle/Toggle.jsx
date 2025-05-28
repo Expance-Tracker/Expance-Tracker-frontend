@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Toggle.module.css";
 
 const Toggle = ({ type, setType }) => {
@@ -11,7 +10,7 @@ const Toggle = ({ type, setType }) => {
       </span>
       <button
         className={`${styles.toggle} ${isIncome ? styles.left : styles.right}`}
-        onClick={() => setType(isIncome ? "expenses" : "income")}
+        onClick={() => setType(isIncome ? "expense" : "income")}
         type="button"
         aria-label="Toggle income/expense"
       >
@@ -31,4 +30,3 @@ const Toggle = ({ type, setType }) => {
 };
 
 export default Toggle;
-

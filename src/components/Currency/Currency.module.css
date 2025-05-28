@@ -53,7 +53,7 @@
 
 @media (min-width: 768px) {
   .external_currency_box {
-    width: 336px;
+      width: 336px;
     flex-shrink: 0;
   }
 
@@ -91,7 +91,7 @@
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .only_deskopt {
       position: absolute;
       width: 1px;

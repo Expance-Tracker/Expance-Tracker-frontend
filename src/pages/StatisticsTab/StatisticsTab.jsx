@@ -4,12 +4,12 @@ import {
   setType,
   setMonth,
   setYear,
-} from "../../redux/statistics/statisticsSlice";
-import { fetchStatistics } from "../../redux/Statistics/operations";
-import StatisticsDashboard from "../../components/Statistics/StatisticsDashboard/StatisticsDashboard";
-import Toggle from "../../components/Statistics/Toggle/Toggle";
-import Chart from "../../components/Statistics/Chart/Chart";
-import StatisticsTable from "../../components/Statistics/StatisticsTable/StatisticsTable";
+} from "../../redux/Statistics/statisticsSlice";
+import { fetchStatistics } from "../../redux/statistics/operations";
+import StatisticsDashboard from "../../components/statistics/StatisticsDashboard/StatisticsDashboard";
+import Toggle from "../../components/statistics/Toggle/Toggle";
+import Chart from "../../components/statistics/Chart/Chart";
+import StatisticsTable from "../../components/statistics/StatisticsTable/StatisticsTable";
 import styles from "./StatisticsTab.module.css";
 import Currency from '../../components/Currency/Currency';
 import Navigation from '../../components/NavLink/Navigation';

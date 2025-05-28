@@ -38,7 +38,7 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              <div className="all-page">
+              <div className="container"> {/* ОБГОРТКА ДЛЯ ВСЬОГО КОНТЕНТУ */}
                 <Header />
                 <div className="page-content">
                   <HomeTab />
@@ -53,9 +53,11 @@ function App() {
           path="/statistics"
           element={
             <PrivateRoute>
-              <Header />
-              <div className="page-content">
-                <StatisticsTab />
+              <div className="container"> {/* ОБГОРТКА ДЛЯ ВСЬОГО КОНТЕНТУ */}
+                <Header />
+                <div className="page-content">
+                  <StatisticsTab />
+                </div>
               </div>
               <LogoutModal />
               <Delete />
@@ -66,9 +68,11 @@ function App() {
           path="/currency"
           element={
             <PrivateRoute>
-              <Header />
-              <div className="page-content">
-                <CurrencyTab />
+              <div className="container"> {/* ОБГОРТКА ДЛЯ ВСЬОГО КОНТЕНТУ */}
+                <Header />
+                <div className="page-content">
+                  <CurrencyTab />
+                </div>
               </div>
               <LogoutModal />
               <Delete />

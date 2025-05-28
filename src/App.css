@@ -1,17 +1,15 @@
-/* Ваші існуючі стилі залишаються без змін */
+/* ===== Глобальні стилі ===== */
 body {
   font-family: "Arial", "Helvetica", "Inter Tight", sans-serif;
-  box-sizing: border-box;
   min-width: 320px;
   background: linear-gradient(135deg, #294045 0%, #1e2f33 100%);
   margin: 0;
-    padding: 0;
-    overflow-x: hidden;
+  padding: 0;
 }
+
 * {
   box-sizing: border-box;
 }
-
 html,
 body {
   margin: 0;
@@ -50,38 +48,28 @@ h2 {
   margin-top: 0;
 }
 
-form {
+.header {
+  width: 100%;
   margin: 0;
   padding: 0;
-  width: 100%;
 }
 
-/* Оновлений page-content */
 .page-content {
-  
-  flex: 1;
+  max-width: 1200px;
   width: 100%;
-  margin: 0 auto 24px;
-  padding: 0 16px;
+  margin: 0 auto;
+  padding: 16px;
 }
 
-svg {
-  vertical-align: middle;
-}
-
-/* Планшет */
 @media (min-width: 768px) {
   .page-content {
     padding: 0 32px;
-    display: flex;
-    margin: 32px auto 32px;
+    margin: 32px auto;
   }
 }
 
-/* Дескотоп */
 @media (min-width: 1280px) {
   .page-content {
-    justify-content: flex-start;
     gap: 32px;
   }
-} 
+}

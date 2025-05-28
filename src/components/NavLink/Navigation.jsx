@@ -1,5 +1,3 @@
-// import { CurrencyIcon, HomeIcon, StatsIcon } from "../Icons/Icons";
-
 import Icon from "../Icon/Icon";
 import { NavLink } from "react-router-dom";
 import styles from "./Navigation.module.css";

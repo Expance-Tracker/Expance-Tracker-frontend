@@ -1,55 +1,43 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import css from "./LoginForm.module.css";
-import { useState } from 'react';
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
+
+import { login } from "../../redux/auth/operations";
+import Loader from "../Loader/Loader";
+
 import walletIcon from "../../assets/walletIcon.svg";
 import loginImg from "../../assets/loginImg.svg";
 import { BiSolidEnvelope } from "react-icons/bi";
 import { MdLock } from "react-icons/md";
 
-import { NavLink, useNavigate } from "react-router-dom";
-import * as Yup from "yup";
-import { useDispatch } from "react-redux";
-import  Loader  from "../Loader/Loader";
-import { login } from "../../redux/auth/operations";
-import toast from "react-hot-toast";
+import css from "./LoginForm.module.css";
+
+const loginValidationSchema = Yup.object().shape({
+  email: Yup.string().min(3).max(64).required("Required"),
+  password: Yup.string().min(8).max(64).required("Required"),
+});
 
 export default function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const initialValues = {
-    email: "",
-    password: ""
-  };
-
-  const loginValidationSchema = Yup.object().shape({
-    email: Yup.string()
-      .min(3, "Min 3 symbols")
-      .max(64, "Not more than 64 symbols")
-      .required("Required"),
-    password: Yup.string()
-      .min(8, "Not less than 8 digits")
-      .max(64, "Not more than 64 digits")
-      .required("Required")
-  });
-
-  const handleSubmit = (values, options) => {
+  const handleSubmit = (values, { resetForm }) => {
     setIsLoading(true);
     dispatch(login(values))
       .unwrap()
       .then((res) => {
         toast.success(`Welcome, ${res.name}`);
-        navigate("/", { replace: true });
-        options.resetForm();
+        navigate("/");
+        resetForm();
       })
       .catch((err) => {
-        console.log(err);
-        toast.error(err);
+        toast.error(err || "Login failed");
       })
-      .finally(() => {
-        setIsLoading(false);
-      });
+      .finally(() => setIsLoading(false));
   };
 
   return (
@@ -57,16 +45,12 @@ export default function LoginForm() {
       {isLoading && <Loader />}
       <div className={css.wrapper}>
         <div className={css.logo}>
-          <img
-            src={walletIcon}
-            alt="Logo icon of the app"
-            width={54}
-            height={54}
-          />
+          <img src={walletIcon} alt="Spendy Logo" width={54} height={54} />
           <h1 className={css.logo__title}>Spendy</h1>
         </div>
+
         <Formik
-          initialValues={initialValues}
+          initialValues={{ email: "", password: "" }}
           validationSchema={loginValidationSchema}
           onSubmit={handleSubmit}
         >
@@ -80,15 +64,9 @@ export default function LoginForm() {
                   placeholder="E-mail"
                   autoComplete="off"
                 />
-
                 <BiSolidEnvelope className={css.field__icon} />
               </label>
-
-              <ErrorMessage
-                name="email"
-                component="span"
-                className={css.error}
-              />
+              <ErrorMessage name="email" component="span" className={css.error} />
             </div>
 
             <div className={css.block}>
@@ -102,29 +80,18 @@ export default function LoginForm() {
                 />
                 <MdLock className={css.field__icon} />
               </label>
-
-              <ErrorMessage
-                name="password"
-                component="span"
-                className={css.error}
-              />
+              <ErrorMessage name="password" component="span" className={css.error} />
             </div>
 
-            <button type="submit" className={css.button}>
-              Log In
-            </button>
+            <button type="submit" className={css.button}>Log In</button>
           </Form>
         </Formik>
+
         <NavLink to="/register">
-          <button type="button" className={css.button__redirect}>
-            Register
-          </button>
+          <button type="button" className={css.button__redirect}>Register</button>
         </NavLink>
-        <img
-          src={loginImg}
-          className={css.helloImg}
-          alt="Hello from wallet image"
-        />
+
+        <img src={loginImg} className={css.helloImg} alt="Welcome illustration" />
       </div>
     </div>
   );

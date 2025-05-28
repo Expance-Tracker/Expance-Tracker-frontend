@@ -1,5 +1,4 @@
 import * as Yup from "yup";
-
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -37,7 +36,7 @@ export default function RegistrationForm() {
 
   return (
     <div className={css["register-container"]}>
-      {isLoading && <Loader />}
+      {isLoading && <Loader />} 
       <div className={css["register-card"]}>
         <div className={css["register-logo"]} />
         <h2 className={css["register-title"]}>Spendy</h2>
@@ -91,9 +90,7 @@ export default function RegistrationForm() {
 
               <div className={css["form-group-registration"]}>
                 <div className={css["input-with-icon-register"]}>
-                  <i
-                    className={`fas fa-envelope ${css["input-icon-register"]}`}
-                  />
+                  <i className={`fas fa-envelope ${css["input-icon-register"]}`} />
                   <Field
                     type="email"
                     name="email"

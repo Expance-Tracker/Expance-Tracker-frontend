@@ -1,0 +1,37 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    /* Розміщення зверху вниз */
+    align-items: center;
+    /* Центрування по горизонталі */
+    justify-content: center;
+    gap: 14px;
+    /* Відступ між заголовком і селекторами */
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    margin-right: 24px;
+}
+
+.periodSelects {
+    display: flex;
+    gap: 16px;
+}
+
+.select {
+    font-size: 16px;
+    border-radius: 8px;
+    padding: 8px 18px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    font-weight: 600;
+    min-width: 112px; }
+    
+       
+    
+  

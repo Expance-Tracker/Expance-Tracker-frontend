@@ -1,0 +1,88 @@
+.toggleWrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+   
+}
+
+.activeLabel {
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    min-width: 65px;
+    text-align: right;
+}
+
+.inactiveLabel {
+    color: #bdbdbd;
+    font-weight: 400;
+    font-size: 16px;
+    min-width: 65px;
+    text-align: left;
+}
+
+.toggle {
+    position: relative;
+    width: 64px;
+    height: 32px;
+    background: #fff;
+    border: none;
+    border-radius: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    outline: none;
+    padding: 0;
+    overflow: hidden;
+}
+
+.icon {
+    position: absolute;
+    top: 0;
+    /* ! */
+    left: 0;
+    /* початково ліворуч */
+    width: 32px;
+    /* ! */
+    height: 32px;
+    /* ! */
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    transition: left 0.3s, background 0.2s, color 0.2s;
+}
+
+/* Income (жовтий кружечок ліворуч) */
+.incomeIcon {
+    background: #ffd600;
+}
+
+/* Expense (червоний кружечок праворуч) */
+.expenseIcon {
+    background: #e53935;
+}
+
+/* Якщо активний income, іконка зліва */
+.left .icon {
+    left: 0;
+}
+
+/* Якщо активний expense, іконка справа */
+.right .icon {
+    left: 32px;
+}
+.toggle:hover {
+    background: #fff !important; 
+}
+@media (min-width: 768px) {
+    .toggleWrapper {
+       
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    } }

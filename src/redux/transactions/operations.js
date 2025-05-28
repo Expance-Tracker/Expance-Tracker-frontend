@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { fetchBalance } from "../slices/balanceSlice"; 
 
 axios.defaults.baseURL = "https://expance-tracker-backend-9zu7.onrender.com";
 
@@ -17,6 +18,10 @@ export const getTransactions = createAsyncThunk(
       axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 
       const { data } = await axios.get("/transactions");
+
+      
+      thunkAPI.dispatch(fetchBalance());
+
       return data.data;
     } catch (err) {
       return thunkAPI.rejectWithValue(
@@ -39,6 +44,9 @@ export const deleteTransaction = createAsyncThunk(
 
       axios.defaults.headers.common.Authorization = `Bearer ${token}`;
       await axios.delete(`/transactions/${id}`);
+
+      
+      thunkAPI.dispatch(fetchBalance());
 
       return id;
     } catch (err) {

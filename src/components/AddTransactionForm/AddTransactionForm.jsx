@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Select from "react-select";
 import DatePicker from "react-datepicker";
@@ -11,6 +11,8 @@ import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import * as Yup from "yup";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { fetchBalance } from "../../redux/slices/balanceSlice";
+import { getTransactions } from "../../redux/transactions/operations";
 
 // Стрілка в дропдауні
 const CustomDropdownIndicator = (props) => {
@@ -119,6 +121,7 @@ const IncomeExpenseToggle = ({ field, form }) => {
 
 //Форма додавання транзакції
 const AddTransactionForm = ({ onClose }) => {
+  const dispatch = useDispatch()
   const token = useSelector((state) => state.auth.token);
   const categories = useSelector((state) => state.categories.items);
   const categoryOptions = categories.map((item) => ({
@@ -144,6 +147,8 @@ const AddTransactionForm = ({ onClose }) => {
       axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 
       const { data } = await axios.post("/transactions", formattedValues);
+      dispatch(getTransactions())
+      dispatch(fetchBalance());
 
       toast.success(data.message);
       onClose();

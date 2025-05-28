@@ -1,8 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const getInitialMobileState = () => {
+  if (typeof window !== 'undefined') {
+    return window.innerWidth <= 768;
+  }
+  return false;
+};
+
 const initialState = {
   isLoading: false,
-  isMobile: window.innerWidth <= 768,
+  isMobile: getInitialMobileState(),
 };
 
 const globalSlice = createSlice({
@@ -12,9 +19,9 @@ const globalSlice = createSlice({
     setLoading: (state, action) => {
       state.isLoading = action.payload;
     },
-    setIsMobile: (state, action) => { 
+    setIsMobile: (state, action) => {
       state.isMobile = action.payload;
-    }
+    },
   },
 });
 

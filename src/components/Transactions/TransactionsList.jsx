@@ -2,11 +2,15 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./Transactions.module.css";
 import TransactionsItem from "./TransactionsItem";
 import { Pencil } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getTransactions } from "../../redux/transactions/operations";
 import { openDeleteModal } from "../../redux/transactions/deleteModalSlice";
+import ModalEditTransaction from "../ModalEditTransaction/ModalEditTransaction";
+import ButtonAddTransaction from "../ButtonAddTransaction/ButtonAddTransaction";
 
 const TransactionsList = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [transactionItem, setTransactionItem] = useState([]);
   const dispatch = useDispatch();
 
   const {
@@ -29,14 +33,18 @@ const TransactionsList = () => {
         {transactions.length === 0 ? (
           <p className={styles.noTransactions}>No transactions yet.</p>
         ) : (
-          <ul className={styles.transactionList}>
-            {transactions.map((item) => (
-              <TransactionsItem key={item._id} transaction={item} />
-            ))}
-          </ul>
+          <div className={styles.transactionContainer}>
+            <ul className={styles.transactionList}>
+              {transactions.map((item) => (
+                <TransactionsItem key={item._id} transaction={item} />
+              ))}
+            </ul>
+            <div className={styles.buttonWrapper}>
+              <ButtonAddTransaction />
+            </div>
+          </div>
         )}
       </div>
-
       {/* Tablet View */}
       <div className={styles.tablet}>
         <div className={styles.tableWrapper}>
@@ -86,7 +94,13 @@ const TransactionsList = () => {
                 </div>
 
                 <div className={styles.buttons}>
-                  <button className={styles.editButtonTablet}>
+                  <button
+                    onClick={() => {
+                      setModalIsOpen(true);
+                      setTransactionItem(item);
+                    }}
+                    className={styles.editButtonTablet}
+                  >
                     <Pencil className={styles.icon} />
                   </button>
                   <button
@@ -99,7 +113,16 @@ const TransactionsList = () => {
               </div>
             ))
           )}
+          {modalIsOpen && (
+            <ModalEditTransaction
+              onClose={() => {
+                setModalIsOpen(false);
+              }}
+              transaction={transactionItem}
+            />
+          )}
         </div>
+        <ButtonAddTransaction />
       </div>
     </>
   );

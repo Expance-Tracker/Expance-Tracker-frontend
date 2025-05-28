@@ -8,29 +8,36 @@ export const fetchBalance = createAsyncThunk(
   'balance/fetchBalance',
   async (_, thunkAPI) => {
     try {
-      
       const state = thunkAPI.getState();
       const token = state.auth.token;
 
       if (!token) {
-        return thunkAPI.rejectWithValue('Error fetching balance token');
+        return thunkAPI.rejectWithValue({
+          status: 401,
+          message: 'No token provided',
+        });
       }
 
-      
       const response = await axios.get(GET_BALANCE_API_URL, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
-      
       const userBalance = response.data.balance ?? 0;
-
       return userBalance;
     } catch (error) {
-      return thunkAPI.rejectWithValue(
-        error.response?.data?.message || error.message || 'Error fetching balance'
-      );
+      if (error.response?.status === 401) {
+        return thunkAPI.rejectWithValue({
+          status: 401,
+          message: 'Unauthorized',
+        });
+      }
+
+      return thunkAPI.rejectWithValue({
+        status: error.response?.status || 500,
+        message: error.message || 'Error fetching balance',
+      });
     }
   }
 );

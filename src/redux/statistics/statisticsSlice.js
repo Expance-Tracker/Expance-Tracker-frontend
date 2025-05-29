@@ -1,17 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { fetchStatistics } from './operations';
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchStatistics } from "./operations";
 
 const initialState = {
   data: [],
   isLoading: false,
   error: null,
-  type: 'expenses',
-  month: new Date().getMonth(),
-  year: new Date().getFullYear(),
+  type: "expense",
+  month: new Date().getMonth() + 1,
+  year: new Date().getFullYear()
 };
 
 const statisticsSlice = createSlice({
-  name: 'statistics',
+  name: "statistics",
   initialState,
   reducers: {
     setType(state, action) {
@@ -22,11 +22,11 @@ const statisticsSlice = createSlice({
     },
     setYear(state, action) {
       state.year = action.payload;
-    },
+    }
   },
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
-      .addCase(fetchStatistics.pending, state => {
+      .addCase(fetchStatistics.pending, (state) => {
         state.isLoading = true;
         state.error = null;
       })
@@ -38,7 +38,7 @@ const statisticsSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       });
-  },
+  }
 });
 
 export const { setType, setMonth, setYear } = statisticsSlice.actions;

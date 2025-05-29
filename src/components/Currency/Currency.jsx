@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import Balance from "../Balance/Balance";
 import bigWallet from "../../assets/Currency/wallet-big.webp";
@@ -12,8 +12,12 @@ const CACHE_DURATION_MS = 60 * 60 * 1000;
 const Currency = () => {
   const [rates, setRates] = useState(null);
   const [error, setError] = useState(null);
+  const hasFetchedRef = useRef(false);
 
   useEffect(() => {
+    if (hasFetchedRef.current) return;
+    hasFetchedRef.current = true;
+
     const fetchRates = async () => {
       try {
         const cached = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -44,21 +48,24 @@ const Currency = () => {
     fetchRates();
   }, []);
 
+  const filteredRates = useMemo(() => {
+    if (!rates) return [];
+    return rates.filter(
+      (rate) =>
+        (rate.currencyCodeA === 840 || rate.currencyCodeA === 978) &&
+        rate.currencyCodeB === 980
+    );
+  }, [rates]);
+
   if (error) return <div>Error: {error}</div>;
   if (!rates) return <div>Loading...</div>;
-
-  const filteredRates = rates.filter(
-    (rate) =>
-      (rate.currencyCodeA === 840 || rate.currencyCodeA === 978) &&
-      rate.currencyCodeB === 980
-  );
 
   return (
     <div className={styles.external_currency_box}>
       <div className={styles.currency_box}>
         <div className={styles.only_deskopt}>
           <Balance className={styles.hidden_mobile} />
-          </div>
+        </div>
         <div className={styles.list_title}>
           <div className={styles.title}>Currency</div>
           <div className={styles.title}>Purchase</div>

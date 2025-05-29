@@ -1,6 +1,4 @@
-// src/components/Balance/Balance.jsx
-
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { fetchBalance } from "../../redux/slices/balanceSlice";
@@ -26,7 +24,13 @@ const Balance = ({ className = "" }) => {
       {error && <p className={styles["balance-error"]}>Error: {error}</p>}
       {!loading && !error && (
         <h2 className={styles["balance-amount"]}>
-          {balance.toLocaleString()} UAH
+          {balance
+            .toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2
+            })
+            .replace(/,/g, " ")}{" "}
+          UAH
         </h2>
       )}
     </div>

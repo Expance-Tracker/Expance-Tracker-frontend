@@ -76,6 +76,45 @@ const CustomDatePicker = ({ field, form, ...props }) => {
   );
 };
 
+const CustomAmountField = ({ field, form, ...props }) => {
+  const { name } = field;
+  const { setFieldValue, setFieldTouched } = form;
+
+  const handleAmountInput = (e) => {
+    let value = e.target.value;
+
+    value = value.replace(/[^0-9.,]/g, "");
+
+    value = value.replace(",", ".");
+
+    const parts = value.split(".");
+    if (parts.length > 2) {
+      value = parts[0] + "." + parts.slice(1).join("");
+    }
+
+    if (parts[1] && parts[1].length > 2) {
+      value = parts[0] + "." + parts[1].substring(0, 2);
+    }
+
+    setFieldValue(name, value);
+  };
+
+  const handleBlur = () => {
+    setFieldTouched(name, true);
+  };
+
+  return (
+    <input
+      {...props}
+      type="text"
+      value={field.value}
+      onInput={handleAmountInput}
+      onBlur={handleBlur}
+      placeholder="0.00"
+    />
+  );
+};
+
 // Перемикач типу транзакцій
 const IncomeExpenseToggle = ({ field, form }) => {
   const { name, value } = field;
@@ -212,9 +251,8 @@ const EditTransactionForm = ({ onClose, transaction }) => {
                 <div>
                   <Field
                     className={s.amountInput}
-                    type="number"
+                    component={CustomAmountField}
                     name="amount"
-                    placeholder="0.00"
                   />
                   <ErrorMessage
                     name="amount"

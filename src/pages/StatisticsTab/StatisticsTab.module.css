@@ -1,187 +1,186 @@
-@media screen and (max-width: 769px){
-    .currency_not_mobile {
-        position: absolute;
-            width: 1px;
-            height: 1px;
-            margin: -1px;
-            border: 0;
-            padding: 0;
-            white-space: nowrap;
-            clip-path: inset(100%);
-            clip: rect(0 0 0 0);
-            overflow: hidden;
-    }
-    
+@media screen and (max-width: 769px) {
+  .currency_not_mobile {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
 }
 .statisticsContainer {
-   min-height: 582px;
-   min-width:  288px;
-    /* фіксована ширина для мобілки */
-    padding-left: 12px;
-    /* внутрішній відступ ліворуч */
-    padding-right: 12px;
-    /* внутрішній відступ праворуч */
-    padding-top: 12px;
-    padding-bottom: 12px;
-    background: linear-gradient(180deg, #355359 0%, #3b5d63 100%);
-    border-radius: 18px;
-    
-    /* інші стилі... */ 
-   }
- @media (min-width: 768px) {
-   .statisticsContainer {
-         display: flex;
-         flex-direction: row;
-         padding-top: 18x;
-         margin-bottom:24px;
-         min-height: 582px;
-      }
-   
-      .chartSide {
-         width: 352px;
-         min-width: 352px;
-         max-width: 352px;
-      }
-   
-      .statsSide {
-         width: 328px;
-         min-width: 328px;
-         max-width: 328px;
-         display: flex;
-         flex-direction: column;
-         gap: 24px;
-      }
-   
-      .dashboard,
-      .tableBlock {
-         width: 100%;
-         max-width: 328px;   }
-  }
-                     
+  min-height: 582px;
+  max-width: 288px;
+  margin: 0 auto;
+  /* фіксована ширина для мобілки */
+  padding-left: 12px;
+  /* внутрішній відступ ліворуч */
+  padding-right: 12px;
+  /* внутрішній відступ праворуч */
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background: linear-gradient(180deg, #355359 0%, #3b5d63 100%);
+  border-radius: 18px;
 
-         
-            
+  /* інші стилі... */
+}
+@media (min-width: 768px) {
+  .statisticsContainer {
+    display: flex;
+    flex-direction: row;
+    padding-top: 18x;
+    margin-bottom: 24px;
+    min-height: 582px;
+    max-width: 698px;
+  }
+
+  .chartSide {
+    width: 352px;
+    min-width: 352px;
+    max-width: 352px;
+  }
+
+  .statsSide {
+    width: 328px;
+    min-width: 328px;
+    max-width: 328px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .dashboard,
+  .tableBlock {
+    width: 100%;
+    max-width: 328px;
+  }
+}
+
 /* Мобільні стилі за замовчуванням */
 .container {
-   display: flex;
-   flex-direction: column;
-   gap: 20px;
-   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
 }
 
 .balance {
-   display: none;
+  display: none;
 }
 
 .box_without_transaction {
-   display: flex;
-   flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .box_navigation_balance {
-   display: flex;
-   flex-direction: column;
-   gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 @media screen and (min-width: 768px) {
-   .container {
-      display: flex;
+  .container {
+    display: flex;
 
-      gap: 24px;
-      width: 100%;
-      align-items: flex-start;
-   }
+    gap: 24px;
+    width: 100%;
+    align-items: flex-start;
+  }
 
-   .box_without_transaction {
-      display: flex;
-      flex-direction: column;
-      min-width: 280px;
-      flex-shrink: 0;
-   }
+  .box_without_transaction {
+    display: flex;
+    flex-direction: column;
+    min-width: 280px;
+    flex-shrink: 0;
+  }
 
-   .box_navigation_balance {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-   }
+  .box_navigation_balance {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 
-   .balance {
-      display: block;
-   }
+  .balance {
+    display: block;
+  }
 }
 
 /* Дескотоп 1280px+ */
 @media screen and (min-width: 1280px) {
-   .container {
-      display: flex;
-      flex-direction: row;
-      gap: 24px;
-      width: 100%;
-      align-items: flex-start;
-   }
+  .container {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    width: 100%;
+    align-items: flex-start;
+  }
 
-   .balance {
-      display: block;
-   }
+  .balance {
+    display: block;
+  }
 
-   .box_without_transaction {
-      display: flex;
-      flex-direction: column;
-      width: 448px;
-      height: 469px;
-      flex-shrink: 0;
-   }
+  .box_without_transaction {
+    display: flex;
+    flex-direction: column;
+    width: 448px;
+    height: 469px;
+    flex-shrink: 0;
+  }
 
-   .box_navigation_balance {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      gap: 32px;
-      flex: 1;
-   }
+  .box_navigation_balance {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 32px;
+    flex: 1;
+  }
 }
 
-@media screen and (min-width:1280px) {
-   .balance_deskopt {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      margin: -1px;
-      border: 0;
-      padding: 0;
-      white-space: nowrap;
-      clip-path: inset(100%);
-      clip: rect(0 0 0 0);
-      overflow: hidden;
-   }
+@media screen and (min-width: 1280px) {
+  .balance_deskopt {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
 }
 
-@media screen and (max-width:767px) {
-   .currency_mobile {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      margin: -1px;
-      border: 0;
-      padding: 0;
-      white-space: nowrap;
-      clip-path: inset(100%);
-      clip: rect(0 0 0 0);
-      overflow: hidden;
-   }
+@media screen and (max-width: 767px) {
+  .currency_mobile {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
 }
 
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+  .without_chart_content {
+    flex-direction: row;
+    display: flex;
+  }
 
-@media screen and (min-width:768px) and (max-width:1280px) {
-   .without_chart_content {
-      flex-direction: row;
-      display: flex;
-   }
-
-   .box_navigation_balance {
-      margin-right: 32px;
-   }
-   .box_navigation_balance {
-      gap: 0;
-   }}
+  .box_navigation_balance {
+    margin-right: 32px;
+  }
+  .box_navigation_balance {
+    gap: 0;
+  }
+}

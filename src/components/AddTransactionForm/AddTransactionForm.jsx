@@ -12,6 +12,47 @@ import * as Yup from "yup";
 import toast from "react-hot-toast";
 import axios from "axios";
 
+// Перемикач типу транзакцій
+const IncomeExpenseToggle = ({ field, form }) => {
+  const { name, value } = field;
+  const { setFieldValue } = form;
+
+  const handleToggle = () => {
+    const newValue = value === "income" ? "expense" : "income";
+    setFieldValue(name, newValue);
+
+    if (newValue === "income") {
+      setFieldValue("category", "Income");
+    } else {
+      setFieldValue("category", "");
+    }
+  };
+
+  return (
+    <div className={s.toggleContainer}>
+      <div className={s.toggleWrapper}>
+        <span className={s.toggleLabel}>Income</span>
+        <div onClick={handleToggle} className={s.toggleSwitch}>
+          <div
+            className={`${s.toggleButton} ${
+              value === "income" ? s.toggleButtonLeft : s.toggleButtonRight
+            }`}
+          >
+            <span className={s.toggleIcon}>
+              {value === "income" ? (
+                <AiOutlinePlus className={s.iconComponent} />
+              ) : (
+                <AiOutlineMinus className={s.iconComponent} />
+              )}
+            </span>
+          </div>
+        </div>
+        <span className={s.toggleLabel}>Expense</span>
+      </div>
+    </div>
+  );
+};
+
 // Стрілка в дропдауні
 const CustomDropdownIndicator = (props) => {
   return (
@@ -76,44 +117,42 @@ const CustomDatePicker = ({ field, form, ...props }) => {
   );
 };
 
-// Перемикач типу транзакцій
-const IncomeExpenseToggle = ({ field, form }) => {
-  const { name, value } = field;
-  const { setFieldValue } = form;
+const CustomAmountField = ({ field, form, ...props }) => {
+  const { name } = field;
+  const { setFieldValue, setFieldTouched } = form;
 
-  const handleToggle = () => {
-    const newValue = value === "income" ? "expense" : "income";
-    setFieldValue(name, newValue);
+  const handleAmountInput = (e) => {
+    let value = e.target.value;
 
-    if (newValue === "income") {
-      setFieldValue("category", "Income");
-    } else {
-      setFieldValue("category", "");
+    value = value.replace(/[^0-9.,]/g, "");
+
+    value = value.replace(",", ".");
+
+    const parts = value.split(".");
+    if (parts.length > 2) {
+      value = parts[0] + "." + parts.slice(1).join("");
     }
+
+    if (parts[1] && parts[1].length > 2) {
+      value = parts[0] + "." + parts[1].substring(0, 2);
+    }
+
+    setFieldValue(name, value);
+  };
+
+  const handleBlur = () => {
+    setFieldTouched(name, true);
   };
 
   return (
-    <div className={s.toggleContainer}>
-      <div className={s.toggleWrapper}>
-        <span className={s.toggleLabel}>Income</span>
-        <div onClick={handleToggle} className={s.toggleSwitch}>
-          <div
-            className={`${s.toggleButton} ${
-              value === "income" ? s.toggleButtonLeft : s.toggleButtonRight
-            }`}
-          >
-            <span className={s.toggleIcon}>
-              {value === "income" ? (
-                <AiOutlinePlus className={s.iconComponent} />
-              ) : (
-                <AiOutlineMinus className={s.iconComponent} />
-              )}
-            </span>
-          </div>
-        </div>
-        <span className={s.toggleLabel}>Expense</span>
-      </div>
-    </div>
+    <input
+      {...props}
+      type="text"
+      value={field.value}
+      onInput={handleAmountInput}
+      onBlur={handleBlur}
+      placeholder="0.00"
+    />
   );
 };
 
@@ -215,9 +254,8 @@ const AddTransactionForm = ({ onClose }) => {
                 <div>
                   <Field
                     className={s.amountInput}
-                    type="number"
+                    component={CustomAmountField}
                     name="amount"
-                    placeholder="0.00"
                   />
                   <ErrorMessage
                     name="amount"

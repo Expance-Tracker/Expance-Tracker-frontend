@@ -66,7 +66,7 @@
 }
 
 .rightSideSpan {
-  font-weight: 400;
+  font-family: "Inter", sans-serif;
   font-size: 16px;
   text-align: right;
   color: #fcfcfc;
@@ -106,6 +106,8 @@
   padding: 4px 12px;
   width: 68px;
   height: 25px;
+  background: none;
+  background-color: transparent;
 }
 
 .editButton {
@@ -114,14 +116,15 @@
   letter-spacing: 0.02em;
   text-align: center;
   color: #fcfcfc;
-  width: 68px;
-  height: 25px;
+  width: 50px;
+  height: 19px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: none;
   background-color: transparent;
   border-radius: 8px;
-  padding: 4px 12px;
+  padding: 0;
 }
 
 .icon {
@@ -131,6 +134,11 @@
 
 .edit {
   padding-left: 4px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: #fcfcfc;
 }
 
 .mobileDiv {
@@ -217,17 +225,23 @@
     align-items: center;
   }
 
-  .incomeRow {
+  .row:nth-child(odd) {
     background: linear-gradient(180deg, #294045 0%, #1e2f33 100%);
   }
 
   .cell {
+    font-family: "Poppins", sans-serif;
     font-weight: 600;
     font-size: 16px;
     color: #fcfcfc;
   }
 
+  .sum {
+    font-family: "Inter", sans-serif;
+  }
+
   .cellItems {
+    font-family: "Inter", sans-serif;
     font-weight: 400;
     font-size: 14px;
     color: #fcfcfc;
@@ -240,6 +254,7 @@
 
   .sumItems {
     text-align: left;
+    font-weight: 600;
   }
 
   .buttons {
@@ -269,6 +284,7 @@
 
   .deleteTablet {
     font-size: 14px;
+    font-weight: 400;
     color: #fcfcfc;
     border: 1px solid #fcfcfc;
     border-radius: 8px;

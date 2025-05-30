@@ -1,13 +1,12 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 
 import { login } from "../../redux/auth/operations";
+import { setLoading } from "../../redux/global/globalSlice";
 import Loader from "../Loader/Loader";
-
 import walletIcon from "../../assets/walletIcon.svg";
 import loginImg from "../../assets/loginImg.svg";
 import { BiSolidEnvelope } from "react-icons/bi";
@@ -21,12 +20,12 @@ const loginValidationSchema = Yup.object().shape({
 });
 
 export default function LoginForm() {
-  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isLoading = useSelector((state) => state.global.isLoading);
 
   const handleSubmit = (values, { resetForm }) => {
-    setIsLoading(true);
+    dispatch(setLoading(true));
     dispatch(login(values))
       .unwrap()
       .then((res) => {
@@ -37,7 +36,9 @@ export default function LoginForm() {
       .catch((err) => {
         toast.error(err || "Login failed");
       })
-      .finally(() => setIsLoading(false));
+      .finally(() => {
+        dispatch(setLoading(false));
+      });
   };
 
   return (

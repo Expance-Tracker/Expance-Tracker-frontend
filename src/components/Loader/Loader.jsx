@@ -2,8 +2,9 @@ import { ClipLoader } from 'react-spinners';
 import { useSelector } from 'react-redux';
 import styles from './Loader.module.css';
 
-const Loader = () => {
-  const isLoading = useSelector((state) => state.global.isLoading);
+const Loader = ({ local = false }) => {
+  const isReduxLoading = useSelector((state) => state.global.isLoading);
+  const isLoading = local !== false ? local : isReduxLoading;
 
   if (!isLoading) return null;
 
@@ -22,5 +23,6 @@ const Loader = () => {
     </div>
   );
 };
+
 
 export default Loader;

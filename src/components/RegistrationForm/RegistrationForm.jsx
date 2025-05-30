@@ -1,13 +1,16 @@
 import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 
-import PasswordStrengthBar from "react-password-strength-bar";
+import { setLoading } from "../../redux/global/globalSlice";
 import axiosInstance from "../../api/axiosConfig";
+import PasswordStrengthBar from "react-password-strength-bar";
+import Loader from "../Loader/Loader";
+
 import css from "./RegistrationForm.module.css";
-import { useState } from "react";
-import walletWave from '../../assets/register/wallet_wave.webp';
-import Loader from '../../components/Loader/Loader';
+import walletWave from "../../assets/register/wallet_wave.webp";
 
 const RegistrationSchema = Yup.object().shape({
   name: Yup.string()
@@ -28,15 +31,21 @@ const RegistrationSchema = Yup.object().shape({
 });
 
 export default function RegistrationForm() {
-  const [isLoading, setIsLoading] = useState(false);
   const [backendError, setBackendError] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [password, setPassword] = useState("");
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isLoading = useSelector((state) => state.global.isLoading);
+
+  useEffect(() => {
+    dispatch(setLoading(false));
+  }, [dispatch]);
 
   return (
     <div className={css["register-container"]}>
-      {isLoading && <Loader />} 
+      {isLoading && <Loader />}
       <div className={css["register-card"]}>
         <div className={css["register-logo"]} />
         <h2 className={css["register-title"]}>Spendy</h2>
@@ -50,7 +59,7 @@ export default function RegistrationForm() {
           validationSchema={RegistrationSchema}
           onSubmit={async (values, { setSubmitting }) => {
             setBackendError("");
-            setIsLoading(true);
+            dispatch(setLoading(true));
             try {
               const res = await axiosInstance.post("/register", {
                 name: values.name,
@@ -61,15 +70,15 @@ export default function RegistrationForm() {
               navigate("/");
             } catch (error) {
               setBackendError(
-                error.response?.data?.message || "Registration error - backend"
+                error.response?.data?.message || "Registration failed"
               );
             } finally {
-              setIsLoading(false);
+              dispatch(setLoading(false));
               setSubmitting(false);
             }
           }}
         >
-          {({ isSubmitting, setFieldValue }) => (
+          {({ setFieldValue }) => (
             <Form>
               <div className={css["form-group-registration"]}>
                 <div className={css["input-with-icon-register"]}>
@@ -81,11 +90,7 @@ export default function RegistrationForm() {
                     className={css["form-input-register"]}
                   />
                 </div>
-                <ErrorMessage
-                  name="name"
-                  component="div"
-                  className={css["form-error-register"]}
-                />
+                <ErrorMessage name="name" component="div" className={css["form-error-register"]} />
               </div>
 
               <div className={css["form-group-registration"]}>
@@ -98,11 +103,7 @@ export default function RegistrationForm() {
                     className={css["form-input-register"]}
                   />
                 </div>
-                <ErrorMessage
-                  name="email"
-                  component="div"
-                  className={css["form-error-register"]}
-                />
+                <ErrorMessage name="email" component="div" className={css["form-error-register"]} />
               </div>
 
               <div className={css["form-group-registration"]}>
@@ -119,11 +120,7 @@ export default function RegistrationForm() {
                     }}
                   />
                 </div>
-                <ErrorMessage
-                  name="password"
-                  component="div"
-                  className={css["form-error-register"]}
-                />
+                <ErrorMessage name="password" component="div" className={css["form-error-register"]} />
               </div>
 
               <div className={css["form-group-registration"]}>
@@ -140,52 +137,27 @@ export default function RegistrationForm() {
                     }}
                   />
                 </div>
-                <ErrorMessage
-                  name="confirmPassword"
-                  component="div"
-                  className={css["form-error-register"]}
-                />
-                <PasswordStrengthBar
-                  password={password}
-                  minLength={8}
-                  className={css["password-bar"]}
-                />
+                <ErrorMessage name="confirmPassword" component="div" className={css["form-error-register"]} />
+                <PasswordStrengthBar password={password} minLength={8} className={css["password-bar"]} />
                 {confirmPassword && confirmPassword !== password && (
-                  <div className={css["form-error-register"]}>
-                    The passwords should match
-                  </div>
+                  <div className={css["form-error-register"]}>The passwords should match</div>
                 )}
               </div>
 
               {backendError && (
-                <div
-                  className={`${css["form-error-register"]} ${css["backend-error-register"]}`}
-                >
+                <div className={`${css["form-error-register"]} ${css["backend-error-register"]}`}>
                   {backendError}
                 </div>
               )}
 
-              <button
-                type="submit"
-                className={css["register-btn"]}
-                disabled={isSubmitting}
-              >
-                Register
-              </button>
+              <button type="submit" className={css["register-btn"]}>Register</button>
 
-              <Link to="/login" className={css["login-link-register"]}>
-                Login
-              </Link>
+              <Link to="/login" className={css["login-link-register"]}>Login</Link>
             </Form>
           )}
         </Formik>
       </div>
-
-      <img
-        src={walletWave}
-        alt="Happy Wallet"
-        className={css["wallet-image-registration"]}
-      />
+      <img src={walletWave} alt="Happy Wallet" className={css["wallet-image-registration"]} />
     </div>
   );
 }

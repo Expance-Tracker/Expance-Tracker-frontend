@@ -13,20 +13,11 @@
   }
 }
 .statisticsContainer {
-  min-height: 582px;
-  max-width: 288px;
+  border-radius: 16px;
+  padding: 16px 12px;
+  width: 288px;
   margin: 0 auto;
-  /* фіксована ширина для мобілки */
-  padding-left: 12px;
-  /* внутрішній відступ ліворуч */
-  padding-right: 12px;
-  /* внутрішній відступ праворуч */
-  padding-top: 12px;
-  padding-bottom: 12px;
   background: linear-gradient(180deg, #355359 0%, #3b5d63 100%);
-  border-radius: 18px;
-
-  /* інші стилі... */
 }
 @media (min-width: 768px) {
   .statisticsContainer {
@@ -35,7 +26,7 @@
     padding-top: 18x;
     margin-bottom: 24px;
     min-height: 582px;
-    max-width: 698px;
+    width: 698px;
   }
 
   .chartSide {
@@ -46,8 +37,6 @@
 
   .statsSide {
     width: 328px;
-    min-width: 328px;
-    max-width: 328px;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -89,7 +78,7 @@
 
     gap: 24px;
     width: 100%;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .box_without_transaction {

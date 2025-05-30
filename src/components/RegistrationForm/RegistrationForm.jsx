@@ -6,8 +6,8 @@ import PasswordStrengthBar from "react-password-strength-bar";
 import axiosInstance from "../../api/axiosConfig";
 import css from "./RegistrationForm.module.css";
 import { useState } from "react";
-import walletWave from '../../assets/register/wallet_wave.webp';
-import Loader from '../../components/Loader/Loader';
+import walletWave from "../../assets/register/wallet_wave.webp";
+import Loader from "../../components/Loader/Loader";
 
 const RegistrationSchema = Yup.object().shape({
   name: Yup.string()
@@ -36,7 +36,7 @@ export default function RegistrationForm() {
 
   return (
     <div className={css["register-container"]}>
-      {isLoading && <Loader />} 
+      {isLoading && <Loader />}
       <div className={css["register-card"]}>
         <div className={css["register-logo"]} />
         <h2 className={css["register-title"]}>Spendy</h2>
@@ -69,8 +69,8 @@ export default function RegistrationForm() {
             }
           }}
         >
-          {({ isSubmitting, setFieldValue }) => (
-            <Form>
+          {({ isSubmitting, setFieldValue, values }) => (
+            <Form className={css.formContainer}>
               <div className={css["form-group-registration"]}>
                 <div className={css["input-with-icon-register"]}>
                   <i className={`fas fa-user ${css["input-icon-register"]}`} />
@@ -90,7 +90,9 @@ export default function RegistrationForm() {
 
               <div className={css["form-group-registration"]}>
                 <div className={css["input-with-icon-register"]}>
-                  <i className={`fas fa-envelope ${css["input-icon-register"]}`} />
+                  <i
+                    className={`fas fa-envelope ${css["input-icon-register"]}`}
+                  />
                   <Field
                     type="email"
                     name="email"
@@ -145,15 +147,12 @@ export default function RegistrationForm() {
                   component="div"
                   className={css["form-error-register"]}
                 />
-                <PasswordStrengthBar
-                  password={password}
-                  minLength={8}
-                  className={css["password-bar"]}
-                />
-                {confirmPassword && confirmPassword !== password && (
-                  <div className={css["form-error-register"]}>
-                    The passwords should match
-                  </div>
+                {values.password && (
+                  <PasswordStrengthBar
+                    password={password}
+                    minLength={8}
+                    className={css["password-bar"]}
+                  />
                 )}
               </div>
 

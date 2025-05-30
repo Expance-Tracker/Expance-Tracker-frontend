@@ -26,7 +26,7 @@ const StatisticsDashboard = ({ month, year, onMonthChange, onYearChange }) => (
         className={styles.select}
       >
         {months.map((m, idx) => (
-          <option value={idx + 1} key={m}>
+          <option className={styles.selectedOption} value={idx + 1} key={m}>
             {m}
           </option>
         ))}
@@ -37,7 +37,7 @@ const StatisticsDashboard = ({ month, year, onMonthChange, onYearChange }) => (
         className={styles.select}
       >
         {years.map((y) => (
-          <option value={y} key={y}>
+          <option className={styles.selectedOption} value={y} key={y}>
             {y}
           </option>
         ))}

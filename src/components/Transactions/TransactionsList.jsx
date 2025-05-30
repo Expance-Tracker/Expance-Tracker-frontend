@@ -31,7 +31,7 @@ const TransactionsList = () => {
     });
   };
 
-  if (isLoading) return;
+  if (isLoading && transactions.length === 0) return;
   if (error) return <p>Error: {error}</p>;
 
   return (

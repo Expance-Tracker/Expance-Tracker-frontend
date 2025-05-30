@@ -10,9 +10,7 @@ import s from "./AddTransactionForm.module.css";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import * as Yup from "yup";
 import toast from "react-hot-toast";
-import axios from "axios";
-import { fetchBalance } from "../../redux/slices/balanceSlice";
-import { getTransactions } from "../../redux/transactions/operations";
+import { addTransaction } from "../../redux/transactions/operations";
 
 // Перемикач типу транзакцій
 const IncomeExpenseToggle = ({ field, form }) => {
@@ -97,8 +95,8 @@ const CustomDatePicker = ({ field, form, ...props }) => {
   const { name, value } = field;
   const { setFieldValue, setFieldTouched } = form;
 
-  const fiftyYearsAgo = new Date();
-  fiftyYearsAgo.setFullYear(fiftyYearsAgo.getFullYear() - 50);
+  const fiveYearsAgo = new Date();
+  fiveYearsAgo.setFullYear(fiveYearsAgo.getFullYear() - 5);
 
   return (
     <div className={s.datePickerWrapper}>
@@ -109,7 +107,7 @@ const CustomDatePicker = ({ field, form, ...props }) => {
         onBlur={() => setFieldTouched(name, true)}
         dateFormat="dd.MM.yyyy"
         placeholderText="Select date"
-        minDate={fiftyYearsAgo}
+        minDate={fiveYearsAgo}
         maxDate={new Date()}
         showPopperArrow={false}
         className={s.dateInput}
@@ -160,7 +158,7 @@ const CustomAmountField = ({ field, form, ...props }) => {
 
 //Форма додавання транзакції
 const AddTransactionForm = ({ onClose }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
   const categories = useSelector((state) => state.categories.items);
   const categoryOptions = categories.map((item) => ({
@@ -177,22 +175,17 @@ const AddTransactionForm = ({ onClose }) => {
   };
 
   const handleSubmit = async (values) => {
-    const formattedValues = {
-      ...values,
-      date: values.date ? values.date.toISOString().split("T")[0] : null
-    };
-
     try {
-      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+      const result = await dispatch(addTransaction(values));
 
-      const { data } = await axios.post("/transactions", formattedValues);
-      dispatch(getTransactions())
-      dispatch(fetchBalance());
-
-      toast.success(data.message);
-      onClose();
-    } catch (e) {
-      toast.error(e.message);
+      if (addTransaction.fulfilled.match(result)) {
+        toast.success(result.payload.message);
+        onClose();
+      } else {
+        toast.error(result.payload);
+      }
+    } catch (error) {
+      toast.error(error.message);
     }
   };
 
@@ -215,12 +208,14 @@ const AddTransactionForm = ({ onClose }) => {
     date: Yup.date()
       .required("Date is required")
       .min(
-        new Date(new Date().setFullYear(new Date().getFullYear() - 50)),
-        "Date cannot be more than 50 years ago"
+        new Date(new Date().setFullYear(new Date().getFullYear() - 5)),
+        "Date cannot be more than 5 years ago"
       )
       .max(new Date(), "Date cannot be in the future"),
 
-    comment: Yup.string().max(30, "Comment cannot exceed 30 characters")
+    comment: Yup.string()
+      .min(2, "Comment must be at least 2 characters")
+      .max(15, "Comment cannot exceed 15 characters")
   });
 
   return (

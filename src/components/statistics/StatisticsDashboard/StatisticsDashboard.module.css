@@ -1,37 +1,47 @@
 .dashboard {
-    display: flex;
-    flex-direction: column;
-    /* Розміщення зверху вниз */
-    align-items: center;
-    /* Центрування по горизонталі */
-    justify-content: center;
-    gap: 14px;
-    /* Відступ між заголовком і селекторами */
-    width: 100%;
-    margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  /* Розміщення зверху вниз */
+  align-items: center;
+  /* Центрування по горизонталі */
+  justify-content: center;
+  gap: 14px;
+  /* Відступ між заголовком і селекторами */
+  width: 100%;
+  margin-bottom: 24px;
 }
 
 .title {
-    font-size: 32px;
-    font-weight: 700;
-    color: #fff;
-    margin-right: 24px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  margin-right: 24px;
 }
 
 .periodSelects {
-    display: flex;
-    gap: 16px;
+  display: flex;
+  gap: 16px;
 }
 
 .select {
-    font-size: 16px;
-    border-radius: 8px;
-    padding: 8px 18px;
-    background: #fff;
-    border: 1px solid #e0e0e0;
-    font-weight: 600;
-    min-width: 112px; }
-    
-       
-    
-  
+  border: 1px solid #fcfcfc;
+  border-radius: 8px;
+  padding: 10px 14px;
+  width: 122px;
+  height: 44px;
+  background-color: transparent;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #fcfcfc;
+}
+
+.selectedOption {
+  background-color: #294045;
+}
+
+@media (min-width: 768px) {
+  .select {
+    width: 148px;
+  }
+}

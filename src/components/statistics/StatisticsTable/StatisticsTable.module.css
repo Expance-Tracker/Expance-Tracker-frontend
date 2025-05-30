@@ -1,74 +1,136 @@
 .tableBlock {
-    width: 264px;
-    min-width: 264px;
-    max-width: 264px;
-    margin: 0 auto;
-    border-radius: 16px;}
+  width: 264px;
+  min-width: 264px;
+  max-width: 264px;
+  border-radius: 16px;
+}
 
 /* Центруємо header */
 .tableHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 264px;
-    /* Фіксована ширина */
-    margin-left: auto;
-    margin-right: auto;
-    /* Центрування + відступ вниз */
-    background: linear-gradient(180deg, #294045 0%, #1e2f33 100%);
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 15px;
-    color: #fff;
-    height: 43px;
-    padding: 0 16px; }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 264px;
+  /* Фіксована ширина */
+  margin-left: auto;
+  margin-right: auto;
+  /* Центрування + відступ вниз */
+  background: linear-gradient(180deg, #294045 0%, #1e2f33 100%);
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff;
+  height: 43px;
+  padding: 0 16px;
+}
 
+.tableHeader > span {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #fcfcfc;
+}
 
 .tableRow {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 264px;
-    /* Фіксована ширина */
-    margin: 0 auto 8px auto;
-    padding: 10px 16px;
-    border-radius: 10px;
-    
-    color: #fff;
-    font-size: 15px;
-    font-weight: 500; 
-    }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 264px;
+  /* Фіксована ширина */
+  margin: 0 auto 8px auto;
+  padding: 15px 0;
+  border-bottom: solid 1px #fcfcfc;
+
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+}
+
 .catInfo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  color: #fcfcfc;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 155px;
 }
 
 .colorDot {
-    width: 18px;
-    height: 18px;
-    border-radius: 4px;
-    display: inline-block;
-    margin-right: 6px;
+  min-width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-right: 6px;
 }
 
 .catAmount {
-    font-variant-numeric: tabular-nums;
-    letter-spacing: 0.4px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  text-align: right;
+  color: #fcfcfc;
 }
 
 /* Footer — total */
 /* Центруємо футер */
 .tableFooter {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 264px;
-    /* Фіксована ширина */
-    margin: 24px auto 0 auto;
-    padding: 10px 16px 0 16px;
-    font-weight: 600;
-    font-size: 15px;
-    color: #fff;
-    border-top: 1px solid #fff3; }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 264px;
+  /* Фіксована ширина */
+  margin: 24px auto 8 auto;
+  padding: 10px 16px 0 16px;
+  font-weight: 600;
+  font-size: 15px;
+  color: #fff;
+}
 
+.totalType {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #fcfcfc;
+}
+
+.incomeAmount {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: right;
+  color: #24cca7;
+}
+
+.expenseAmount {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: right;
+  color: #f23a3a;
+}
+
+@media (min-width: 768px) {
+  .tableHeader {
+    width: 317px;
+  }
+
+  .tableRow {
+    width: 317px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .colorDot {
+    min-width: 19px;
+  }
+
+  .tableFooter {
+    width: 317px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .colorDot {
+    min-width: 24px;
+  }
+}

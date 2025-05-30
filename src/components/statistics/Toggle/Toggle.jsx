@@ -1,3 +1,4 @@
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import styles from "./Toggle.module.css";
 
 const Toggle = ({ type, setType }) => {
@@ -19,7 +20,11 @@ const Toggle = ({ type, setType }) => {
             isIncome ? styles.incomeIcon : styles.expenseIcon
           }`}
         >
-          {isIncome ? "+" : "−"}
+          {isIncome ? (
+            <AiOutlinePlus className={styles.iconComponent} />
+          ) : (
+            <AiOutlineMinus className={styles.iconComponent} />
+          )}
         </span>
       </button>
       <span className={!isIncome ? styles.activeLabel : styles.inactiveLabel}>

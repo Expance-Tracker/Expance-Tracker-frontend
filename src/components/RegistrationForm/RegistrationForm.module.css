@@ -145,7 +145,7 @@
 
 @media (min-width: 768px) {
   .register-card {
-    max-width: 400px;
+    min-width: 533px;
     padding: 32px 62px 50px;
   }
 
@@ -159,9 +159,6 @@
 }
 
 @media (min-width: 1280px) {
-  .register-card {
-    min-width: 533px;
-  }
   .wallet-image-registration {
     max-width: 300px;
     width: 30%;

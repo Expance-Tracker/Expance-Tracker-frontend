@@ -80,7 +80,7 @@ export default function RegistrationForm() {
             }
           }}
         >
-          {({ setFieldValue, values }) => (
+          {({ isSubmitting, setFieldValue, values }) => (
             <Form className={css.formContainer}>
               <div className={css["form-group-registration"]}>
                 <div className={css["input-with-icon-register"]}>

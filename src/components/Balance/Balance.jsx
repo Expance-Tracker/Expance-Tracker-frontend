@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -17,7 +17,8 @@ const Balance = ({ className = "" }) => {
     const checkBalance = async () => {
       const resultAction = await dispatch(fetchBalance());
 
-      if (fetchBalance.fulfilled.match(resultAction)) {}
+      if (fetchBalance.fulfilled.match(resultAction)) {
+      }
 
       if (initialLoading) setInitialLoading(false);
     };
@@ -30,7 +31,6 @@ const Balance = ({ className = "" }) => {
 
     return () => clearInterval(interval);
   }, [dispatch, initialLoading]);
-
 
   useEffect(() => {
     if (error && error.status === 401) {
@@ -45,11 +45,19 @@ const Balance = ({ className = "" }) => {
     <div className={`${styles["balance-card"]} ${className}`}>
       <p className={styles["balance-label"]}>YOUR BALANCE</p>
 
-      {initialLoading && <p className={styles["balance-loading"]}>Loading...</p>}
+      {initialLoading && (
+        <p className={styles["balance-loading"]}>Loading...</p>
+      )}
 
       {!initialLoading && !error && (
         <h2 className={styles["balance-amount"]}>
-          {balance.toLocaleString()} UAH
+          {balance
+            .toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2
+            })
+            .replace(/,/g, " ")}{" "}
+          UAH
         </h2>
       )}
     </div>

@@ -12,6 +12,7 @@
   padding: 0 !important;
   margin: 0 !important;
   min-height: 24px;
+  color: #081222 !important;
 }
 
 .react-select__placeholder {
@@ -57,12 +58,12 @@
 
 .react-select__option:hover,
 .react-select__option--is-focused {
-  background-color: #4a5568 !important;
+  background: linear-gradient(180deg, #355359 0%, #3b5d63 100%) !important;
   color: #ffffff !important;
 }
 
 .react-select__option--is-selected {
-  background-color: #4a5568 !important;
+  background: linear-gradient(180deg, #355359 0%, #3b5d63 100%) !important;
   color: #ffffff !important;
 }
 

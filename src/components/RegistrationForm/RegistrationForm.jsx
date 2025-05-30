@@ -78,8 +78,8 @@ export default function RegistrationForm() {
             }
           }}
         >
-          {({ setFieldValue }) => (
-            <Form>
+          {({ setFieldValue, values }) => (
+            <Form className={css.formContainer}>
               <div className={css["form-group-registration"]}>
                 <div className={css["input-with-icon-register"]}>
                   <i className={`fas fa-user ${css["input-icon-register"]}`} />
@@ -90,12 +90,18 @@ export default function RegistrationForm() {
                     className={css["form-input-register"]}
                   />
                 </div>
-                <ErrorMessage name="name" component="div" className={css["form-error-register"]} />
+                <ErrorMessage
+                  name="name"
+                  component="div"
+                  className={css["form-error-register"]}
+                />
               </div>
 
               <div className={css["form-group-registration"]}>
                 <div className={css["input-with-icon-register"]}>
-                  <i className={`fas fa-envelope ${css["input-icon-register"]}`} />
+                  <i
+                    className={`fas fa-envelope ${css["input-icon-register"]}`}
+                  />
                   <Field
                     type="email"
                     name="email"
@@ -103,7 +109,11 @@ export default function RegistrationForm() {
                     className={css["form-input-register"]}
                   />
                 </div>
-                <ErrorMessage name="email" component="div" className={css["form-error-register"]} />
+                <ErrorMessage
+                  name="email"
+                  component="div"
+                  className={css["form-error-register"]}
+                />
               </div>
 
               <div className={css["form-group-registration"]}>
@@ -120,7 +130,11 @@ export default function RegistrationForm() {
                     }}
                   />
                 </div>
-                <ErrorMessage name="password" component="div" className={css["form-error-register"]} />
+                <ErrorMessage
+                  name="password"
+                  component="div"
+                  className={css["form-error-register"]}
+                />
               </div>
 
               <div className={css["form-group-registration"]}>
@@ -137,27 +151,44 @@ export default function RegistrationForm() {
                     }}
                   />
                 </div>
-                <ErrorMessage name="confirmPassword" component="div" className={css["form-error-register"]} />
-                <PasswordStrengthBar password={password} minLength={8} className={css["password-bar"]} />
-                {confirmPassword && confirmPassword !== password && (
-                  <div className={css["form-error-register"]}>The passwords should match</div>
+                <ErrorMessage
+                  name="confirmPassword"
+                  component="div"
+                  className={css["form-error-register"]}
+                />
+                {values.password && (
+                  <PasswordStrengthBar
+                    password={password}
+                    minLength={8}
+                    className={css["password-bar"]}
+                  />
                 )}
               </div>
 
               {backendError && (
-                <div className={`${css["form-error-register"]} ${css["backend-error-register"]}`}>
+                <div
+                  className={`${css["form-error-register"]} ${css["backend-error-register"]}`}
+                >
                   {backendError}
                 </div>
               )}
 
-              <button type="submit" className={css["register-btn"]}>Register</button>
+              <button type="submit" className={css["register-btn"]}>
+                Register
+              </button>
 
-              <Link to="/login" className={css["login-link-register"]}>Login</Link>
+              <Link to="/login" className={css["login-link-register"]}>
+                Login
+              </Link>
             </Form>
           )}
         </Formik>
       </div>
-      <img src={walletWave} alt="Happy Wallet" className={css["wallet-image-registration"]} />
+      <img
+        src={walletWave}
+        alt="Happy Wallet"
+        className={css["wallet-image-registration"]}
+      />
     </div>
   );
 }

@@ -1,92 +1,89 @@
-/* === Мобільні (до 768px) === */
 .balance-card {
-  padding: 16px;
-  border-radius: 12px;
+  padding: 24px 16px;
+  border-radius: 16px;
   background: linear-gradient(180deg, #355359 0%, #3b5d63 100%);
   color: #ffffff;
-  text-align: center;
-  width: 100%;
-  min-width: 288px;
+  text-align: start;
+  max-width: 288px;
+  margin: 0 auto;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .balance-label {
+  font-family: "Inter", sans-serif;
+  font-weight: 200;
   font-size: 12px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 8px;
+  text-transform: uppercase;
+  color: #fcfcfc;
+  opacity: 0.4;
+  margin-bottom: 18px;
 }
 
 .balance-amount {
-  font-size: 26px;
+  font-family: "Inter", sans-serif;
   font-weight: 700;
-  color: #ffffff;
-  margin: 0 0 12px;
+  font-size: 30px;
+  color: #fcfcfc;
 }
 
 /* === Планшети (768px до 1023px) === */
 @media (min-width: 768px) {
   .balance-card {
-    padding: 9px 24px 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 18px;
     border-radius: 16px;
+    padding: 16px;
     min-width: 338px;
+    height: 143px;
+    margin: 0;
   }
 
   .balance-label {
-    font-size: 14px;
-  }
-
-  .balance-amount {
-    font-size: 32px;
-  }
-
-  .refresh-button {
-    font-size: 16px;
+    margin-bottom: 0;
   }
 }
 
-/* === ПК (від 1024px) === */
 @media (min-width: 1280px) {
   .balance-card {
     background: transparent;
     box-shadow: none;
     text-align: left;
+    display: block;
+    min-width: 416px;
+    height: auto;
+    padding-top: 5px;
   }
 
   .balance-label {
-    font-size: 14px;
+    margin-bottom: 12px;
   }
 
   .balance-amount {
-    font-size: 36px;
-    color: #ffffff;
-  }
-
-  .refresh-button {
-    margin-top: 12px;
+    margin-bottom: 7px;
   }
 }
 
-
-@media screen and (min-width: 768px) and (max-width: 1280px) {
-  .balance-card{
+/* @media screen and (min-width: 768px) and (max-width: 1280px) {
+  .balance-card {
     height: 143px;
     width: 338px;
     text-align: start;
-    padding: 38px
+    padding: 38px;
   }
-  .balance-label{
-    margin-bottom:18px;
+  .balance-label {
+    margin-bottom: 18px;
   }
-}
+} */
 
-@media screen and (max-width: 768px){
-.balance-card{
-  text-align: start;
-}
-.balance-label{
-  opacity: 40%;
-  margin-bottom: 18px;
-}
-}
-  
+/* @media screen and (max-width: 768px) {
+  .balance-card {
+    text-align: start;
+  }
+  .balance-label {
+    opacity: 40%;
+    margin-bottom: 18px;
+  }
+} */

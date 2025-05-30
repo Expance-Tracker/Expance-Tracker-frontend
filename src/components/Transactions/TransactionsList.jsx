@@ -23,7 +23,15 @@ const TransactionsList = () => {
     dispatch(getTransactions());
   }, [dispatch]);
 
-  if (isLoading) return;
+  const formatDate = (date) => {
+    return new Date(date).toLocaleDateString("ru-RU", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "2-digit"
+    });
+  };
+
+  if (isLoading && transactions.length === 0) return;
   if (error) return <p>Error: {error}</p>;
 
   return (
@@ -54,7 +62,6 @@ const TransactionsList = () => {
             <div className={`${styles.cell} ${styles.category}`}>Category</div>
             <div className={`${styles.cell} ${styles.comment}`}>Comment</div>
             <div className={`${styles.cell} ${styles.sum}`}>Sum</div>
-            <div className={styles.buttonsHeader}></div>
           </div>
 
           {transactions.length === 0 ? (
@@ -63,18 +70,15 @@ const TransactionsList = () => {
             </div>
           ) : (
             transactions.map((item) => (
-              <div
-                key={item._id}
-                className={`${styles.row} ${
-                  item.type === "+" ? styles.incomeRow : styles.expenseRow
-                }`}
-              >
+              <div key={item._id} className={styles.row}>
                 <div className={`${styles.cellItems} ${styles.dataItems}`}>
-                  {new Date(item.date).toLocaleDateString("en-CA")}
+                  {formatDate(item.date)}
                 </div>
 
                 <div className={`${styles.cellItems} ${styles.typeItems}`}>
-                  <span className={styles.typeBox}>{item.type}</span>
+                  <span className={styles.typeBox}>
+                    {item.type === "income" ? "+" : "-"}
+                  </span>
                 </div>
 
                 <div className={`${styles.cellItems} ${styles.categoryItems}`}>
@@ -90,7 +94,12 @@ const TransactionsList = () => {
                     item.type === "+" ? styles.sumgreen : styles.sumyellow
                   }`}
                 >
-                  {item.amount}
+                  {item.amount
+                    .toLocaleString("en-US", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2
+                    })
+                    .replace(/,/g, " ")}
                 </div>
 
                 <div className={styles.buttons}>

@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Select from "react-select";
 import DatePicker from "react-datepicker";
@@ -11,6 +11,8 @@ import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import * as Yup from "yup";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { fetchBalance } from "../../redux/slices/balanceSlice";
+import { updateTransaction } from "../../redux/transactions/operations";
 
 // Стрілка в дропдауні
 const CustomDropdownIndicator = (props) => {
@@ -54,8 +56,8 @@ const CustomDatePicker = ({ field, form, ...props }) => {
   const { name, value } = field;
   const { setFieldValue, setFieldTouched } = form;
 
-  const fiftyYearsAgo = new Date();
-  fiftyYearsAgo.setFullYear(fiftyYearsAgo.getFullYear() - 50);
+  const fiveYearsAgo = new Date();
+  fiveYearsAgo.setFullYear(fiveYearsAgo.getFullYear() - 5);
 
   return (
     <div className={s.datePickerWrapper}>
@@ -66,13 +68,52 @@ const CustomDatePicker = ({ field, form, ...props }) => {
         onBlur={() => setFieldTouched(name, true)}
         dateFormat="dd.MM.yyyy"
         placeholderText="Select date"
-        minDate={fiftyYearsAgo}
+        minDate={fiveYearsAgo}
         maxDate={new Date()}
         showPopperArrow={false}
         className={s.dateInput}
       />
       <MdDateRange className={s.dateIcon} />
     </div>
+  );
+};
+
+const CustomAmountField = ({ field, form, ...props }) => {
+  const { name } = field;
+  const { setFieldValue, setFieldTouched } = form;
+
+  const handleAmountInput = (e) => {
+    let value = e.target.value;
+
+    value = value.replace(/[^0-9.,]/g, "");
+
+    value = value.replace(",", ".");
+
+    const parts = value.split(".");
+    if (parts.length > 2) {
+      value = parts[0] + "." + parts.slice(1).join("");
+    }
+
+    if (parts[1] && parts[1].length > 2) {
+      value = parts[0] + "." + parts[1].substring(0, 2);
+    }
+
+    setFieldValue(name, value);
+  };
+
+  const handleBlur = () => {
+    setFieldTouched(name, true);
+  };
+
+  return (
+    <input
+      {...props}
+      type="text"
+      value={field.value}
+      onInput={handleAmountInput}
+      onBlur={handleBlur}
+      placeholder="0.00"
+    />
   );
 };
 
@@ -121,7 +162,7 @@ const IncomeExpenseToggle = ({ field, form }) => {
 const EditTransactionForm = ({ onClose, transaction }) => {
   const { type, amount, category, date, comment, _id } = transaction;
 
-  const token = useSelector((state) => state.auth.token);
+  const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories.items);
   const categoryOptions = categories.map((item) => ({
     value: item.name,
@@ -137,15 +178,33 @@ const EditTransactionForm = ({ onClose, transaction }) => {
   };
 
   const handleSubmit = async (values) => {
+    const currentTransaction = {
+      type,
+      amount,
+      category,
+      date,
+      comment
+    };
+
+    if (
+      JSON.stringify({ ...values, amount: Number(values.amount) }) ===
+      JSON.stringify(currentTransaction)
+    ) {
+      toast.error("Nothing edited");
+      return;
+    }
     try {
-      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+      const result = await dispatch(
+        updateTransaction({
+          id: _id,
+          values
+        })
+      ).unwrap();
 
-      const { data } = await axios.put(`/transactions/${_id}`, values);
-
-      toast.success(data.message);
+      toast.success(result.message);
       onClose();
-    } catch (e) {
-      toast.error(e.message);
+    } catch (error) {
+      toast.error(error);
     }
   };
 
@@ -168,12 +227,14 @@ const EditTransactionForm = ({ onClose, transaction }) => {
     date: Yup.date()
       .required("Date is required")
       .min(
-        new Date(new Date().setFullYear(new Date().getFullYear() - 50)),
-        "Date cannot be more than 50 years ago"
+        new Date(new Date().setFullYear(new Date().getFullYear() - 5)),
+        "Date cannot be more than 5 years ago"
       )
       .max(new Date(), "Date cannot be in the future"),
 
-    comment: Yup.string().max(30, "Comment cannot exceed 30 characters")
+    comment: Yup.string()
+      .min(2, "Comment must be at least 2 characters")
+      .max(15, "Comment cannot exceed 15 characters")
   });
 
   return (
@@ -212,9 +273,8 @@ const EditTransactionForm = ({ onClose, transaction }) => {
                 <div>
                   <Field
                     className={s.amountInput}
-                    type="number"
+                    component={CustomAmountField}
                     name="amount"
-                    placeholder="0.00"
                   />
                   <ErrorMessage
                     name="amount"

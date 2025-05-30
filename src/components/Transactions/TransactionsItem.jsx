@@ -8,22 +8,32 @@ import ModalEditTransaction from "../ModalEditTransaction/ModalEditTransaction";
 const TransactionsItem = ({ transaction }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const dispatch = useDispatch();
-  const { _id, date, type, category, comment, sum } = transaction;
+  const { _id, date, type, category, comment, amount } = transaction;
+
+  const formatDate = (date) => {
+    return new Date(date).toLocaleDateString("ru-RU", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "2-digit"
+    });
+  };
 
   return (
-    <div className={`${css.card} ${type === "+" ? css.income : css.expense}`}>
+    <div
+      className={`${css.card} ${type === "income" ? css.income : css.expense}`}
+    >
       <div className={css.rowWrapper}>
         <div className={css.row}>
           <span className={css.leftSideSpan}>Date</span>
-          <span className={css.rightSideSpan}>
-            {new Date(date).toLocaleDateString("en-CA")}
-          </span>
+          <span className={css.rightSideSpan}>{formatDate(date)}</span>
         </div>
       </div>
       <div className={css.rowWrapper}>
         <div className={css.row}>
           <span className={css.leftSideSpan}>Type</span>
-          <span className={css.rightSideSpan}>{type}</span>
+          <span className={css.rightSideSpan}>
+            {type === "income" ? "+" : "-"}
+          </span>
         </div>
       </div>
       <div className={css.rowWrapper}>
@@ -41,7 +51,18 @@ const TransactionsItem = ({ transaction }) => {
       <div className={css.rowWrapper}>
         <div className={css.row}>
           <span className={css.leftSideSpan}>Sum</span>
-          <span className={css.rightSideSpan}>{sum}</span>
+          <span
+            className={`${css.rightSideSpan} ${
+              type === "income" ? css.sumgreen : css.sumyellow
+            }`}
+          >
+            {amount
+              .toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              })
+              .replace(/,/g, " ")}
+          </span>
         </div>
       </div>
       <div className={css.divDeleteEdit}>
@@ -60,9 +81,8 @@ const TransactionsItem = ({ transaction }) => {
           <span className={css.editStaff}>
             <Pencil className={css.icon} />
           </span>
+          <span className={css.edit}>Edit</span>
         </button>
-
-        <span className={css.edit}>Edit</span>
       </div>
       {modalIsOpen && (
         <ModalEditTransaction

@@ -39,7 +39,12 @@ const TransactionsList = () => {
       {/* Mobile View */}
       <div className={styles.mobileDiv}>
         {transactions.length === 0 ? (
-          <p className={styles.noTransactions}>No transactions yet.</p>
+          <>
+            <p className={styles.noTransactions}>No transactions yet. </p>
+            <div className={styles.noTransactionsAddBtn}>
+              <ButtonAddTransaction />
+            </div>
+          </>
         ) : (
           <div className={styles.transactionContainer}>
             <ul className={styles.transactionList}>
